@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DestinoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',HomeController::class );
+
+Route::get('compra', [CompraController::class,'index']);
+Route::get('compra/resumen/{compra}', [CompraController::class,'show']);
+
+
+Route::get('destinos', [DestinoController::class,'index']);
+
+Route::get('destinos/{destino}', [DestinoController::class,'show']);
+
+Route::get('/registrar',[UserController::class,'create']);
