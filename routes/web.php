@@ -17,6 +17,7 @@ use App\Http\Controllers\CompraController;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/',HomeController::class );
 
 Route::get('compra', [CompraController::class,'index']);
@@ -28,3 +29,12 @@ Route::get('destinos', [DestinoController::class,'index']);
 Route::get('destinos/{destino}', [DestinoController::class,'show']);
 
 Route::get('/registrar',[UserController::class,'create']);
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/destino', function () {
+    return 'welcome';
+});
+>>>>>>> 8011ddb9b82efccef6977f4f2ef636c1b27d8e51
