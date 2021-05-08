@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DestinoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,10 @@ Route::get('compra/resumen/{compra}', [CompraController::class,'show']);
 
 
 Route::get('destinos', [DestinoController::class,'index']);
-
 Route::get('destinos/{destino}', [DestinoController::class,'show']);
 
-Route::get('/registrar',[UserController::class,'create']);
+
+Route::get('registrar',[UserController::class,'create']);
+
+Route::get('login', [LoginController::class,'index']);
+Route::post('login', [LoginController::class,'login'])->name('login');
