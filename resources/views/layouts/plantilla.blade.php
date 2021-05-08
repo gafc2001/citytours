@@ -7,6 +7,8 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title> @yield('title') </title>
     <!--favicon -->
@@ -35,6 +37,9 @@
         </div>
     </div>
 <!--header -->
+<script src="{{ asset('js/jQuery.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
 @yield('content')
 <!--nav  -->
 </body>
