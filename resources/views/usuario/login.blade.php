@@ -27,6 +27,7 @@
     </div>
 </div>   
 @endsection
+/*Smith*/
 {{-- <div class="col-md-4 col-md-uffset-4">
     <div class="panel panel-default">
         <div class="panel-heading">
