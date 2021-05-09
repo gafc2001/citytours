@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Destino
@@ -20,13 +21,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Destino extends Model
 {
-    
+    use HasFactory;
     static $rules = [
 		'name' => 'required',
 		'image' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 10;
 
     /**
      * Attributes that should be mass-assignable.
