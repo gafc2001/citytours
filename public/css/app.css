@@ -35,7 +35,7 @@ body{
   .active{
     background-color: #20233a;
   }
-  
+
   .list-container{
     
     width: 100%;
@@ -97,12 +97,7 @@ body{
     transition: all .3s ease;
     color:#ec0000;
 }
-.back{
-    background: url(/img/turismo.jpg);
-    width: 100%;
-    height: 1080px;
-    background-size: cover;
-}
+
 /**Slider**/
 body section {
     display: block;
