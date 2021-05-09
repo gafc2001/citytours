@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title> @yield('title') </title>
+    <!--<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">-->
     <!--favicon -->
     <!--estilos -->
 </head>
@@ -26,7 +27,7 @@
         <div class="list-container">
             <ul class="list">
                 <li><a href="" class="activo">INICIO</a></li>
-                <li><a href="" class="activo">DESTINOS</a>
+                <li><a href="{{route('Mostrardestinos.index')}}" class="activo">DESTINOS</a>
                     
                 </li>
                 <li><a href="" class="activo">NOSOTROS</a></li>

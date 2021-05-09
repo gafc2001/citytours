@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DestinoController;
+use App\Http\Controllers\MostrarDestinoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\LoginController;
@@ -24,6 +24,7 @@ Route::get('compra', [CompraController::class,'index']);
 Route::get('compra/resumen/{compra}', [CompraController::class,'show']);
 
 
+<<<<<<< HEAD
 // Route::get('destinos', [DestinoController::class,'index']);
 // Route::get('destinos/{destino}', [DestinoController::class,'show']);
 
@@ -46,3 +47,9 @@ Route::get('destino/{destino}/edit','App\Http\Controllers\DestinoController@edit
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('destinos', [MostrarDestinoController::class,'index'])->name('Mostrardestinos.index');
+Route::get('destinos/{destino}', [MostrarDestinoController::class,'show'])->name('Mostrardestinos.show');
+
+Route::get('/registrar',[UserController::class,'create']);
+>>>>>>> 38b42944397dad865e41fd3ccb838bb43e5888a6
