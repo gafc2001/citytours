@@ -7,12 +7,11 @@
        <ul>
 
               @foreach ($destinos as $destino)
-              <li>{{$destino-> name}} </li>
-              <a href="destinos/{{$destino-> id}}">seleccionar destino</a>
+              <li>DESTINO: {{$destino-> name}} </li>
+              <a href={{route('Mostrardestinos.show',$destino-> id)}}>seleccionar destino</a>
                   
               @endforeach
        </ul>
-
        {{$destinos->links()}}
 @endsection
 

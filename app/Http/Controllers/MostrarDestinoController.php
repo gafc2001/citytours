@@ -6,7 +6,7 @@ use App\Models\Destino;
 use App\Models\Subdestino;
 use Illuminate\Http\Request;
 
-class destinoController extends Controller
+class MostrarDestinoController extends Controller
 {
     public function index(){
         $destinos= Destino::paginate();
