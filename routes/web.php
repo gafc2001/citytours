@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MostrarDestinoController;
 use App\Http\Controllers\DestinoController;
+use App\Http\Controllers\MostrarSubdestinoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\LoginController;
@@ -37,11 +38,11 @@ Route::post('login', [LoginController::class,'login'])->name('login');
 
 Route::get('admin',[AdminController::class,'index'])->name('index');
 
-Auth::routes();
+//Auth::routes();
 
 Route::resource('admin/destinos', DestinoController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('destinos', [MostrarDestinoController::class,'index'])->name('Mostrardestinos.index');
-Route::get('destinos/{destino}', [MostrarDestinoController::class,'show'])->name('Mostrardestinos.show');
+Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('MostrarSubdestino.show');
 
 Route::get('/registrar',[UserController::class,'create']);

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Subdestino;
+use App\Models\Lugar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SubdestinoFactory extends Factory
+class LugarFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Subdestino::class;
+    protected $model = Lugar::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +22,11 @@ class SubdestinoFactory extends Factory
     public function definition()
     {
         return [
-
             'name'=>$this->faker->city,
+            'details'=> $this-> faker->sentence(),
             'image'=> $this-> faker->sentence(),
-            'id_destination'=>$this->faker->numberBetween($min = 1, $max = 25),
-            'user_id'=>$this->faker->numberBetween($min = 1, $max = 25)
-            
+            'idsubdestination'=>$this->faker->numberBetween($min = 1, $max = 25),
+            //
         ];
     }
 }

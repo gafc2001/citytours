@@ -16,7 +16,7 @@ class DestinoSeeder extends Seeder
     public function run()
     {
         
-        Destino::factory(25)->create(); //esto sirve para crear los 25 datos fake puestos en la carpeta  factories
+        Destino::factory(5)->create(); //esto sirve para crear los 25 datos fake puestos en la carpeta  factories
    
         /*  llenar datos manualmente a la base de datos
     
