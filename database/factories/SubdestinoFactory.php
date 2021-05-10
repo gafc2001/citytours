@@ -25,8 +25,7 @@ class SubdestinoFactory extends Factory
 
             'name'=>$this->faker->city,
             'image'=> $this-> faker->sentence(),
-            'id_destination'=>$this->faker->numberBetween($min = 1, $max = 25),
-            'user_id'=>$this->faker->numberBetween($min = 1, $max = 25)
+            'id_destination'=>$this->faker->numberBetween($min = 1, $max = 5)
             
         ];
     }

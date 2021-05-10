@@ -25,7 +25,8 @@ class LugarFactory extends Factory
             'name'=>$this->faker->city,
             'details'=> $this-> faker->sentence(),
             'image'=> $this-> faker->sentence(),
-            'idsubdestination'=>$this->faker->numberBetween($min = 1, $max = 25),
+            'precio'=>$this->faker->numberBetween($min = 1, $max = 5),
+            'idsubdestination'=>$this->faker->numberBetween($min = 1, $max = 10),
             //
         ];
     }

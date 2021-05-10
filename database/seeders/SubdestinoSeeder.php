@@ -14,6 +14,6 @@ class SubdestinoSeeder extends Seeder
      */
     public function run()
     {
-        Subdestino::factory(5)->create();
+        Subdestino::factory(10)->create();
     }
 }

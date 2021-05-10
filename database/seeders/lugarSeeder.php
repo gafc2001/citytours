@@ -14,6 +14,6 @@ class lugarSeeder extends Seeder
      */
     public function run()
     {
-        Lugar::factory(5)->create();
+        Lugar::factory(15)->create();
     }
 }
