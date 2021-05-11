@@ -8,8 +8,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('image') }}
-            {{ Form::text('image', $destino->image, ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }}
-            {!! $errors->first('image', '<div class="invalid-feedback">:message</p>') !!}
+            {{ Form::file('image') }}
+            <br>
+            <img src="{{asset('storage/img/'.$destino->image)}}" alt="">
+            {!! $errors->first('image', '<div class="invalid-feedback" style="display:block">:message</p>') !!}
         </div>
 
     </div>

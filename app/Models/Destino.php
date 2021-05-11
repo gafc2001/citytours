@@ -24,7 +24,7 @@ class Destino extends Model
     use HasFactory;
     static $rules = [
 		'name' => 'required',
-		'image' => 'required',
+		'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
     protected $perPage = 10;

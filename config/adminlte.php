@@ -241,13 +241,13 @@ return [
         ],
         [
             'text'        => 'Subdestinos',
-            'url'         => 'admin/destinos2',
-            'icon'        => 'fas fa-globe-asia',
+            'url'         => 'admin/subdestinos',
+            'icon'        => 'fas fa-route',
         ],
         [
             'text'        => 'Lugares',
             'url'         => 'admin/destinos2',
-            'icon'        => 'far fa-image',
+            'icon'        => 'fas fa-map-marked-alt',
         ],
         ['header' => 'account_settings'],
         [
