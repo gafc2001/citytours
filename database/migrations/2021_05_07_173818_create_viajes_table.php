@@ -15,7 +15,7 @@ class CreateViajesTable extends Migration
     {
         Schema::create('viajes', function (Blueprint $table) {
             $table->id();
-            $table->time('time')->default('00:00:00');
+            $table->time('time')->default('00:00');
             $table->date('date');
             $table->timestamps();
             $table->unsignedBigInteger('id_destination')->nullable();

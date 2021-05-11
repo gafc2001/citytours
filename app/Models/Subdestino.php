@@ -24,10 +24,10 @@ class Subdestino extends Model
     
     static $rules = [
 		'name' => 'required',
-		'image' => 'required',
+		'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
-    protected $perPage = 20;
+    protected $perPage = 5;
 
     /**
      * Attributes that should be mass-assignable.

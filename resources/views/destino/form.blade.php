@@ -10,7 +10,7 @@
             {{ Form::label('image') }}
             {{ Form::file('image') }}
             <br>
-            <img src="{{asset('storage/img/'.$destino->image)}}" alt="">
+            <img src="{{asset('storage/img/'.$destino->image)}}" height="200" alt="">
             {!! $errors->first('image', '<div class="invalid-feedback" style="display:block">:message</p>') !!}
         </div>
 

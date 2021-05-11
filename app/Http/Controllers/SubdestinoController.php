@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subdestino;
+use App\Models\Destino;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 /**
@@ -18,10 +20,14 @@ class SubdestinoController extends Controller
      */
     public function index()
     {
-        $subdestinos = Subdestino::paginate();
+        $subdestinos = Subdestino::join('destinos','destinos.id','=','subdestinos.id_destination')
+                        ->select('subdestinos.*','destinos.name as destino')                
+                        ->paginate();
+
 
         return view('subdestino.index', compact('subdestinos'))
             ->with('i', (request()->input('page', 1) - 1) * $subdestinos->perPage());
+        // return dd($subdestinos);
     }
 
     /**
@@ -32,7 +38,8 @@ class SubdestinoController extends Controller
     public function create()
     {
         $subdestino = new Subdestino();
-        return view('subdestino.create', compact('subdestino'));
+        $destinos = Destino::pluck('name','id');
+        return view('subdestino.create', compact('subdestino','destinos'));
     }
 
     /**
@@ -45,7 +52,16 @@ class SubdestinoController extends Controller
     {
         request()->validate(Subdestino::$rules);
 
-        $subdestino = Subdestino::create($request->all());
+        $image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img',$image);
+
+        $subdestino = Subdestino::insert([
+            'name' => $request->name,
+            'image' =>$image,
+            'id_destination' => $request->id_destination,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
         return redirect()->route('subdestinos.index')
             ->with('success', 'Subdestino created successfully.');
@@ -73,8 +89,8 @@ class SubdestinoController extends Controller
     public function edit($id)
     {
         $subdestino = Subdestino::find($id);
-
-        return view('subdestino.edit', compact('subdestino'));
+        $destinos = Destino::pluck('name','id');
+        return view('subdestino.edit', compact('subdestino','destinos'));
     }
 
     /**
@@ -88,7 +104,19 @@ class SubdestinoController extends Controller
     {
         request()->validate(Subdestino::$rules);
 
-        $subdestino->update($request->all());
+        $old_image = $subdestino->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
+
+        $new_image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img',$new_image);
+
+
+        $subdestino->update([
+            'name' => $request->name,
+            'image' =>$new_image,
+            'id_destination' => $request->id_destination,
+            'updated_at' =>date('Y-m-d H:i:s')
+        ]);
 
         return redirect()->route('subdestinos.index')
             ->with('success', 'Subdestino updated successfully');
@@ -101,8 +129,10 @@ class SubdestinoController extends Controller
      */
     public function destroy($id)
     {
-        $subdestino = Subdestino::find($id)->delete();
-
+        $subdestino = Subdestino::find($id);
+        $img_path = $subdestino->image;
+        $subdestino->delete();
+        $dirs = Storage::delete('public/img/'.$img_path);
         return redirect()->route('subdestinos.index')
             ->with('success', 'Subdestino deleted successfully');
     }

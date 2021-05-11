@@ -95,12 +95,21 @@ class DestinoController extends Controller
     public function update(Request $request, Destino $destino)
     {
         request()->validate(Destino::$rules);
+        $old_image = $destino->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
 
-        $destino->update($request->all());
+        $new_image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img',$new_image);
+        
+        $destino->update([
+            'name' => $request->name,
+            'image' => $new_image
+        ]);
 
         return redirect()->route('destinos.index')
             ->with('success', 'Destino updated successfully');
     }
+
 
     /**
      * @param int $id

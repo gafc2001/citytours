@@ -8,12 +8,14 @@
         </div>
         <div class="form-group">
             {{ Form::label('image') }}
-            {{ Form::text('image', $subdestino->image, ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image']) }}
-            {!! $errors->first('image', '<div class="invalid-feedback">:message</p>') !!}
+            {{ Form::file('image') }}
+            <br>
+            <img src="{{asset('storage/img/'.$subdestino->image)}}" height="200" alt="">
+            {!! $errors->first('image', '<div class="invalid-feedback" style="display:block">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('id_destination') }}
-            {{ Form::text('id_destination', $subdestino->id_destination, ['class' => 'form-control' . ($errors->has('id_destination') ? ' is-invalid' : ''), 'placeholder' => 'Id Destination']) }}
+            {{ Form::select('id_destination', $destinos,null, $attributes = ['class' => 'form-control' . ($errors->has('id_destination') ? ' is-invalid' : '')]) }}
             {!! $errors->first('id_destination', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
