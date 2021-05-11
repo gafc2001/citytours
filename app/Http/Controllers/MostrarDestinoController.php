@@ -14,13 +14,9 @@ class MostrarDestinoController extends Controller
         return view('destinos.destino',compact('destinos'));
 
     }
-    public function show($destino){
+    public function show(){
         //tambien asi se pone 
         //compact('destino') = ['destino'=>$destino]
         
-        $Subdestinos= Subdestino::where('id_destination',$destino)->get();
-
-        
-        return view('destinos.Seleccion',['destino'=>$destino],['subdestinos'=>$Subdestinos]);
     }
 }

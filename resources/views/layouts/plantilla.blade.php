@@ -38,8 +38,11 @@
         </div>
     </div>
 <!--header -->
+
 <script src="{{ asset('js/jQuery.js') }}"></script>
 <script src="{{ asset('js/mian.js') }}"></script>
+
+
 
 @yield('content')
 <!--nav  -->

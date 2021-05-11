@@ -18,6 +18,7 @@ class CreateLugarsTable extends Migration
             $table->string('name');
             $table->text('details');
             $table->string('image');
+            $table->float('precio')->unsigned();
             $table->timestamps();
             $table->unsignedBigInteger('idsubdestination')->nullable();
             $table->foreign('idsubdestination')->references('id')->on('subdestinos');
