@@ -32,10 +32,6 @@
                             <strong>Id Destination:</strong>
                             {{ $subdestino->id_destination }}
                         </div>
-                        <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $subdestino->user_id }}
-                        </div>
 
                     </div>
                 </div>

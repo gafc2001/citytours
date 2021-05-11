@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  * @property $id_destination
- * @property $user_id
  *
  * @property Destino $destino
  * @property Lugar[] $lugars
@@ -26,7 +25,6 @@ class Subdestino extends Model
     static $rules = [
 		'name' => 'required',
 		'image' => 'required',
-		'user_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,7 +34,7 @@ class Subdestino extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','image','id_destination','user_id'];
+    protected $fillable = ['name','image','id_destination'];
 
 
     /**

@@ -39,7 +39,6 @@
 										<th>Name</th>
 										<th>Image</th>
 										<th>Id Destination</th>
-										<th>User Id</th>
 
                                         <th></th>
                                     </tr>
@@ -52,7 +51,6 @@
 											<td>{{ $subdestino->name }}</td>
 											<td>{{ $subdestino->image }}</td>
 											<td>{{ $subdestino->id_destination }}</td>
-											<td>{{ $subdestino->user_id }}</td>
 
                                             <td>
                                                 <form action="{{ route('subdestinos.destroy',$subdestino->id) }}" method="POST">

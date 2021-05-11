@@ -16,11 +16,6 @@
             {{ Form::text('id_destination', $subdestino->id_destination, ['class' => 'form-control' . ($errors->has('id_destination') ? ' is-invalid' : ''), 'placeholder' => 'Id Destination']) }}
             {!! $errors->first('id_destination', '<div class="invalid-feedback">:message</p>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $subdestino->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</p>') !!}
-        </div>
 
     </div>
     <div class="box-footer mt20">
