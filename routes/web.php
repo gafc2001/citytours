@@ -45,4 +45,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('destinos', [MostrarDestinoController::class,'index'])->name('Mostrardestinos.index');
 Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('MostrarSubdestino.show');
 
+Route::get('seleccioncompra/{lugarid}',[CompraController::class,'show'])->name('compra.show');
+
 Route::get('/registrar',[UserController::class,'create']);

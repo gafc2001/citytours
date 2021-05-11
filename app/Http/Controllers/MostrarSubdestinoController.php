@@ -49,9 +49,10 @@ class MostrarSubdestinoController extends Controller
     {
         $destino= Destino::find($destinos);
         $subdestinos= Subdestino::join('lugars','lugars.idsubdestination','=','subdestinos.id')
-                            ->select('subdestinos.name as subdestino','lugars.name as lugar','subdestinos.image as imagenS','lugars.image as imagenL')
+                            ->select('subdestinos.name as subdestino','lugars.id as lugarid','lugars.name as lugar','subdestinos.image as imagenS','lugars.precio as precio','lugars.image as imagenL')
                             ->where('subdestinos.id_destination','=',$destinos)
                             ->get();
+
 
 
         return view('destinos.Seleccion',compact('subdestinos'),compact('destino'));
