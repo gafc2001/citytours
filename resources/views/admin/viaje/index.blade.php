@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Subdestino
+    Viaje
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Subdestino') }}
+                                {{ __('Viaje') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('subdestinos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('viaje.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,26 +36,32 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Name</th>
-										<th>Image</th>
-										<th>Id Destination</th>
+										<th>Time</th>
+										<th>Date</th>
+										<th>Tickets</th>
+										<th>Price</th>
+										<th>Discount</th>
+										<th>Id Lugar</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($subdestinos as $subdestino)
+                                    @foreach ($viajes as $viaje)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $subdestino->name }}</td>
-											<td>{{ $subdestino->image }}</td>
-											<td>{{ $subdestino->id_destination }}</td>
+											<td>{{ $viaje->time }}</td>
+											<td>{{ $viaje->date }}</td>
+											<td>{{ $viaje->tickets }}</td>
+											<td>{{ $viaje->price }}</td>
+											<td>{{ $viaje->discount }}</td>
+											<td>{{ $viaje->id_lugar }}</td>
 
                                             <td>
-                                                <form action="{{ route('subdestinos.destroy',$subdestino->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('subdestinos.show',$subdestino->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('subdestinos.edit',$subdestino->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('viaje.destroy',$viaje->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('viaje.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('viaje.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -68,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $subdestinos->links() !!}
+                {!! $viajes->links() !!}
             </div>
         </div>
     </div>

@@ -18,7 +18,6 @@ function bannerSwitcher() {
         if($(window).scrollTop() > 60) {
             $(".menu").addClass("active");
         } else {
-            //remove the background property so it comes transparent again (defined in your css)
            $(".menu").removeClass("active");
         }
     });

@@ -1,6 +1,4 @@
 
-
-
 <h1>Directorio de destinos  aqui</h1> 
 @foreach ($destinos as $destino)
 <p><strong>DESTINO:</strong>{{$destino->name}} </p>

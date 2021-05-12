@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubdestinosTable extends Migration
+class LugaresTuristicos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSubdestinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('Lugar-Turistico', function (Blueprint $table) {
+        Schema::create('lugares_turisticos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image');
-            $table->timestamps();
+            $table->string('lugar_turistico');
+            $table->string('imagen');
             $table->unsignedBigInteger('id_departamento')->nullable();
-            $table->foreign('id_departamento')->references('id')->on('Departamento');
+            $table->foreign('id_departamento')->references('id')->on('departamentos');
+            
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSubdestinosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Lugar-Turistico');
+        Schema::dropIfExists('lugares_turisticos');
     }
 }

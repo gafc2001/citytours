@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoletasTable extends Migration
+class Boletas extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,8 @@ class CreateBoletasTable extends Migration
         Schema::create('boletas', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->float('total');
+            $table->decimal('total', $precision = 8, $scale = 2);
+            $table->decimal('subtotal', $precision = 8, $scale = 2);
             $table->timestamps();
             $table->unsignedBigInteger('id_travel')->nullable();
             $table->foreign('id_travel')->references('id')->on('viajes');
