@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\LugaresTuristico;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
 
 /**
@@ -20,7 +21,7 @@ class LugaresTuristicoController extends Controller
     {
         $lugaresTuristicos = LugaresTuristico::paginate();
 
-        return view('lugares-turistico.index', compact('lugaresTuristicos'))
+        return view('admin.lugares-turistico.index', compact('lugaresTuristicos'))
             ->with('i', (request()->input('page', 1) - 1) * $lugaresTuristicos->perPage());
     }
 
@@ -32,7 +33,7 @@ class LugaresTuristicoController extends Controller
     public function create()
     {
         $lugaresTuristico = new LugaresTuristico();
-        return view('lugares-turistico.create', compact('lugaresTuristico'));
+        return view('admin.lugares-turistico.create', compact('lugaresTuristico'));
     }
 
     /**
@@ -47,7 +48,7 @@ class LugaresTuristicoController extends Controller
 
         $lugaresTuristico = LugaresTuristico::create($request->all());
 
-        return redirect()->route('lugar.index')
+        return redirect()->route('admin.lugares-turistico.index')
             ->with('success', 'LugaresTuristico created successfully.');
     }
 
@@ -61,7 +62,7 @@ class LugaresTuristicoController extends Controller
     {
         $lugaresTuristico = LugaresTuristico::find($id);
 
-        return view('lugares-turistico.show', compact('lugaresTuristico'));
+        return view('admin.lugares-turistico.show', compact('lugaresTuristico'));
     }
 
     /**
@@ -74,7 +75,7 @@ class LugaresTuristicoController extends Controller
     {
         $lugaresTuristico = LugaresTuristico::find($id);
 
-        return view('lugares-turistico.edit', compact('lugaresTuristico'));
+        return view('admin.lugares-turistico.edit', compact('lugaresTuristico'));
     }
 
     /**
@@ -90,7 +91,7 @@ class LugaresTuristicoController extends Controller
 
         $lugaresTuristico->update($request->all());
 
-        return redirect()->route('lugar.index')
+        return redirect()->route('admin.lugares-turistico.index')
             ->with('success', 'LugaresTuristico updated successfully');
     }
 

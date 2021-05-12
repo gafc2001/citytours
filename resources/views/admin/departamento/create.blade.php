@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Create Departamento

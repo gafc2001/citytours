@@ -32,7 +32,7 @@ class Viaje extends Model
 		'price' => 'required',
 		'discount' => 'required',
     ];
-
+    
     protected $perPage = 20;
 
     /**

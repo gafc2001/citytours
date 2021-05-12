@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Tour;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Tour;
 use Illuminate\Http\Request;
 
 /**
@@ -20,7 +21,7 @@ class TourController extends Controller
     {
         $tours = Tour::paginate();
 
-        return view('tour.index', compact('tours'))
+        return view('admin.tour.index', compact('tours'))
             ->with('i', (request()->input('page', 1) - 1) * $tours->perPage());
     }
 
@@ -32,7 +33,7 @@ class TourController extends Controller
     public function create()
     {
         $tour = new Tour();
-        return view('tour.create', compact('tour'));
+        return view('admin.tour.create', compact('tour'));
     }
 
     /**
@@ -47,7 +48,7 @@ class TourController extends Controller
 
         $tour = Tour::create($request->all());
 
-        return redirect()->route('tour.index')
+        return redirect()->route('admin.tour.index')
             ->with('success', 'Tour created successfully.');
     }
 
@@ -61,7 +62,7 @@ class TourController extends Controller
     {
         $tour = Tour::find($id);
 
-        return view('tour.show', compact('tour'));
+        return view('admin.tour.show', compact('tour'));
     }
 
     /**
@@ -74,7 +75,7 @@ class TourController extends Controller
     {
         $tour = Tour::find($id);
 
-        return view('tour.edit', compact('tour'));
+        return view('admin.tour.edit', compact('tour'));
     }
 
     /**
@@ -90,7 +91,7 @@ class TourController extends Controller
 
         $tour->update($request->all());
 
-        return redirect()->route('tour.index')
+        return redirect()->route('admin.tour.index')
             ->with('success', 'Tour updated successfully');
     }
 
@@ -103,7 +104,7 @@ class TourController extends Controller
     {
         $tour = Tour::find($id)->delete();
 
-        return redirect()->route('tour.index')
+        return redirect()->route('admin.tour.index')
             ->with('success', 'Tour deleted successfully');
     }
 }

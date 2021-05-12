@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Update Lugares Turistico
@@ -16,7 +16,7 @@
                         <span class="card-title">Update Lugares Turistico</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('lugar.update', $lugaresTuristico->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('lugares.update', $lugaresTuristico->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

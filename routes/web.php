@@ -44,10 +44,10 @@ Route::get('admin',[AdminController::class,'index'])->name('index');
 Auth::routes();
 
 //Dashboard
-Route::resource('admin/destinos', DepartamentoController::class);
-Route::resource('admin/subdestinos', LugaresTuristicoController::class);
-Route::resource('admin/lugars', TourController::class);
-Route::resource('admin/viajes', ViajeController::class);
+Route::resource('admin/departamento', DepartamentoController::class);
+Route::resource('admin/lugares', LugaresTuristicoController::class);
+Route::resource('admin/tour', TourController::class);
+Route::resource('admin/viaje', ViajeController::class);
 
 
 

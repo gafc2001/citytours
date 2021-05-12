@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Departamento;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Departamento;
 use Illuminate\Http\Request;
 
 /**
  * Class DepartamentoController
- * @package App\Http\Controllers
+ * @package App\Http\Controllers\Admin
  */
 class DepartamentoController extends Controller
 {
