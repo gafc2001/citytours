@@ -50,14 +50,11 @@ Route::resource('admin/lugars', TourController::class);
 Route::resource('admin/viajes', ViajeController::class);
 
 
-<<<<<<< HEAD
 Route::get('destinos/seleccioncompra/{lugarid}',[CompraController::class,'show'])->name('compra.show');
 
 Route::get('/registrar',[UserController::class,'create']);
-=======
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> afbf4776eaf1632681ef0811c0c5fea09c43030b
