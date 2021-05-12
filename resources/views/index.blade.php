@@ -65,4 +65,5 @@
               {{auth()->user()->username}}
        @endauth
     <!-- SLIDER -->
+    @section('content')
 @endsection

@@ -41,17 +41,10 @@ Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->n
 
 Route::get('admin',[AdminController::class,'index'])->name('index');
 
-Auth::routes();
-
 //Dashboard
 Route::resource('admin/departamento', DepartamentoController::class);
 Route::resource('admin/lugares', LugaresTuristicoController::class);
 Route::resource('admin/tour', TourController::class);
 Route::resource('admin/viaje', ViajeController::class);
 
-
-
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
