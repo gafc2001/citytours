@@ -49,7 +49,7 @@
                                             
 											<td>{{ $departamento->departamento }}</td>
 											<td>
-                                                <img src="{{ asset('storage/img/'.$departamento->imagen) }}" alt="">
+                                                <img src="{{ asset('storage/img/'.$departamento->imagen) }}" height="80" alt="">
                                             </td>
                                             <td>
                                                 <form action="{{ route('departamento.destroy',$departamento->id) }}" method="POST">

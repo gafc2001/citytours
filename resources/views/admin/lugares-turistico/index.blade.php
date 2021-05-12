@@ -27,7 +27,12 @@
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
                         </div>
+                    @elseif(($message = Session::get('error')))
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
+                        </div>
                     @endif
+                    
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -49,8 +54,10 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $lugaresTuristico->lugar_turistico }}</td>
-											<td>{{ $lugaresTuristico->imagen }}</td>
-											<td>{{ $lugaresTuristico->id_departamento }}</td>
+											<td>
+                                                <img src="{{ asset('storage/img/'.$lugaresTuristico->imagen) }}" height="80" alt="">
+                                            </td>
+											<td>{{ $lugaresTuristico->departamento }}</td>
 
                                             <td>
                                                 <form action="{{ route('lugares.destroy',$lugaresTuristico->id) }}" method="POST">

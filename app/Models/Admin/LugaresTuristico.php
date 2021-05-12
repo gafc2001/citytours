@@ -19,10 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class LugaresTuristico extends Model
 {
+    public $timestamps = false;
     
     static $rules = [
 		'lugar_turistico' => 'required',
 		'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // 'id_departamento' => 'required',
     ];
 
     protected $perPage = 20;

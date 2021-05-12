@@ -16,10 +16,10 @@
                         <span class="card-title">Create Lugares Turistico</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('lugare.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('lugares.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('lugares-turistico.form')
+                            @include('admin.lugares-turistico.form')
 
                         </form>
                     </div>

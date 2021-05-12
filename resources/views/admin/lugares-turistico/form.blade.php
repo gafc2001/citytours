@@ -8,12 +8,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('imagen') }}
-            {{ Form::text('imagen', $lugaresTuristico->imagen, ['class' => 'form-control' . ($errors->has('imagen') ? ' is-invalid' : ''), 'placeholder' => 'Imagen']) }}
-            {!! $errors->first('imagen', '<div class="invalid-feedback">:message</p>') !!}
+            {{ Form::file('imagen') }}
+            {!! $errors->first('imagen', '<div class="invalid-feedback" style="display:block;">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('id_departamento') }}
-            {{ Form::text('id_departamento', $lugaresTuristico->id_departamento, ['class' => 'form-control' . ($errors->has('id_departamento') ? ' is-invalid' : ''), 'placeholder' => 'Id Departamento']) }}
+            {{ Form::select('id_departamento', $departamento,$lugaresTuristico->id_departamento, ['class' => 'form-control' . ($errors->has('id_departamento') ? ' is-invalid' : '')]) }}
             {!! $errors->first('id_departamento', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

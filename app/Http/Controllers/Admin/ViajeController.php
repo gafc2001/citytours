@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Viaje;
+use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +20,9 @@ class ViajeController extends Controller
      */
     public function index()
     {
-        $viajes = Viaje::paginate();
+        $viajes = Viaje::join('lugares_turisticos','lugares_turisticos.id','=','viajes.id_lugar')
+                        ->select('viajes.*','lugares_turisticos.lugar_turistico')
+                        ->paginate();
 
         return view('admin.viaje.index', compact('viajes'))
             ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
@@ -33,7 +36,8 @@ class ViajeController extends Controller
     public function create()
     {
         $viaje = new Viaje();
-        return view('admin.viaje.create', compact('viaje'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.viaje.create', compact('viaje','lugares'));
     }
 
     /**
@@ -47,9 +51,10 @@ class ViajeController extends Controller
         request()->validate(Viaje::$rules);
 
         $viaje = Viaje::create($request->all());
-
-        return redirect()->route('admin.viaje.index')
+        
+        return redirect()->route('viaje.index')
             ->with('success', 'Viaje created successfully.');
+        // return dd($request->all());
     }
 
     /**
@@ -61,8 +66,8 @@ class ViajeController extends Controller
     public function show($id)
     {
         $viaje = Viaje::find($id);
-
-        return view('admin.viaje.show', compact('viaje'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.viaje.show', compact('viaje','lugares'));
     }
 
     /**
@@ -91,7 +96,7 @@ class ViajeController extends Controller
 
         $viaje->update($request->all());
 
-        return redirect()->route('admin.viaje.index')
+        return redirect()->route('viaje.index')
             ->with('success', 'Viaje updated successfully');
     }
 
@@ -104,7 +109,7 @@ class ViajeController extends Controller
     {
         $viaje = Viaje::find($id)->delete();
 
-        return redirect()->route('admin.viaje.index')
+        return redirect()->route('viaje.index')
             ->with('success', 'Viaje deleted successfully');
     }
 }

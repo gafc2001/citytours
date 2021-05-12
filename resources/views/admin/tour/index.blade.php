@@ -50,7 +50,9 @@
                                             
 											<td>{{ $tour->tour }}</td>
 											<td>{{ $tour->details }}</td>
-											<td>{{ $tour->imagen }}</td>
+											<td>
+                                                <img src="{{ asset('storage/img/'.$tour->imagen) }}"  height="80" alt="">
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('tour.destroy',$tour->id) }}" method="POST">

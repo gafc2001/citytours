@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Departamento extends Model
 {
+    public $timestamps = false;
     
     static $rules = [
 		'departamento' => 'required',

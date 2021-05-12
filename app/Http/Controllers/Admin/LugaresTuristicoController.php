@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Departamento;
 use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 /**
  * Class LugaresTuristicoController
  * @package App\Http\Controllers
@@ -19,7 +20,9 @@ class LugaresTuristicoController extends Controller
      */
     public function index()
     {
-        $lugaresTuristicos = LugaresTuristico::paginate();
+        $lugaresTuristicos = LugaresTuristico::join('departamentos','lugares_turisticos.id_departamento','=','departamentos.id')
+                                ->select('lugares_turisticos.*','departamentos.departamento')                    
+                                ->paginate();
 
         return view('admin.lugares-turistico.index', compact('lugaresTuristicos'))
             ->with('i', (request()->input('page', 1) - 1) * $lugaresTuristicos->perPage());
@@ -33,7 +36,9 @@ class LugaresTuristicoController extends Controller
     public function create()
     {
         $lugaresTuristico = new LugaresTuristico();
-        return view('admin.lugares-turistico.create', compact('lugaresTuristico'));
+        $departamento = Departamento::pluck('departamento','id');
+
+        return view('admin.lugares-turistico.create', compact('lugaresTuristico','departamento'));
     }
 
     /**
@@ -46,9 +51,16 @@ class LugaresTuristicoController extends Controller
     {
         request()->validate(LugaresTuristico::$rules);
 
-        $lugaresTuristico = LugaresTuristico::create($request->all());
+        $image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$image);
 
-        return redirect()->route('admin.lugares-turistico.index')
+        $lugaresTuristico = LugaresTuristico::insert([
+            'lugar_turistico' => $request->lugar_turistico,
+            'imagen' => $image,
+            'id_departamento' => $request->id_departamento
+        ]);
+
+        return redirect()->route('lugares.index')
             ->with('success', 'LugaresTuristico created successfully.');
     }
 
@@ -74,8 +86,9 @@ class LugaresTuristicoController extends Controller
     public function edit($id)
     {
         $lugaresTuristico = LugaresTuristico::find($id);
-
-        return view('admin.lugares-turistico.edit', compact('lugaresTuristico'));
+        $departamento = Departamento::pluck('departamento','id');
+        
+        return view('admin.lugares-turistico.edit', compact('lugaresTuristico','departamento'));
     }
 
     /**
@@ -85,14 +98,31 @@ class LugaresTuristicoController extends Controller
      * @param  LugaresTuristico $lugaresTuristico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LugaresTuristico $lugaresTuristico)
+    public function update(Request $request, LugaresTuristico $lugare)
     {
         request()->validate(LugaresTuristico::$rules);
 
-        $lugaresTuristico->update($request->all());
+        $old_image = $lugare->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
 
-        return redirect()->route('admin.lugares-turistico.index')
-            ->with('success', 'LugaresTuristico updated successfully');
+        $new_image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+        
+        
+        $res = $lugare->update([
+            'lugar_turistico' => $request->lugar_turistico,
+            'imagen' => $new_image,
+            'id_departamento' => $request->id_departamento
+        ]);
+
+        if($res){
+            return redirect()->route('lugares.index')
+                ->with('success', 'Lugar Turistico se actualizo correctamente');
+        }else{
+            return redirect()->route('lugares.index')
+                ->with('error', 'Hubo un error');
+        }
+
     }
 
     /**
@@ -102,9 +132,12 @@ class LugaresTuristicoController extends Controller
      */
     public function destroy($id)
     {
-        $lugaresTuristico = LugaresTuristico::find($id)->delete();
-
-        return redirect()->route('lugar.index')
+        $lugaresTuristico = LugaresTuristico::find($id);
+        $img_path = $lugaresTuristico->image;
+        $lugaresTuristico->delete();
+        $dirs = Storage::delete('public/img/'.$img_path);
+        
+        return redirect()->route('lugares.index')
             ->with('success', 'LugaresTuristico deleted successfully');
     }
 }

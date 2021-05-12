@@ -56,7 +56,7 @@
 											<td>{{ $viaje->tickets }}</td>
 											<td>{{ $viaje->price }}</td>
 											<td>{{ $viaje->discount }}</td>
-											<td>{{ $viaje->id_lugar }}</td>
+											<td>{{ $viaje->lugar_turistico }}</td>
 
                                             <td>
                                                 <form action="{{ route('viaje.destroy',$viaje->id) }}" method="POST">

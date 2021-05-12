@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tour extends Model
 {
+    public $timestamps = false;
     
     static $rules = [
 		'tour' => 'required',

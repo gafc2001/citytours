@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Tour;
+use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +20,9 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = Tour::paginate();
+        $tours = Tour::join('lugares_turisticos','lugares_turisticos.id','=','tours.id_lugar_turistico')
+                        ->select('tours.*','lugares_turisticos.lugar_turistico')                
+                        ->paginate();
 
         return view('admin.tour.index', compact('tours'))
             ->with('i', (request()->input('page', 1) - 1) * $tours->perPage());
@@ -33,7 +36,8 @@ class TourController extends Controller
     public function create()
     {
         $tour = new Tour();
-        return view('admin.tour.create', compact('tour'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.tour.create', compact('tour','lugares'));
     }
 
     /**
@@ -46,10 +50,18 @@ class TourController extends Controller
     {
         request()->validate(Tour::$rules);
 
-        $tour = Tour::create($request->all());
+        $image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$image);
 
-        return redirect()->route('admin.tour.index')
-            ->with('success', 'Tour created successfully.');
+        $tour = Tour::insert([
+            'tour' => $request->tour,
+            'details' => $request->details,
+            'imagen' => $image,
+            'id_lugar_turistico' => $request->id_lugar_turistico
+        ]);
+
+        return redirect()->route('tour.index')
+            ->with('success', 'Tour creado.');
     }
 
     /**
@@ -61,7 +73,7 @@ class TourController extends Controller
     public function show($id)
     {
         $tour = Tour::find($id);
-
+        
         return view('admin.tour.show', compact('tour'));
     }
 
@@ -74,8 +86,8 @@ class TourController extends Controller
     public function edit($id)
     {
         $tour = Tour::find($id);
-
-        return view('admin.tour.edit', compact('tour'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.tour.create', compact('tour','lugares'));
     }
 
     /**
@@ -89,7 +101,18 @@ class TourController extends Controller
     {
         request()->validate(Tour::$rules);
 
-        $tour->update($request->all());
+        $old_image = $tour->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
+
+        $new_image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+
+        $tour->update([
+            'tour' => $request->tour,
+            'details' => $request->details,
+            'imagen' => $new_image,
+            'id_lugar_turistico' => $request->id_lugar_turistico
+        ]);
 
         return redirect()->route('admin.tour.index')
             ->with('success', 'Tour updated successfully');
@@ -102,8 +125,10 @@ class TourController extends Controller
      */
     public function destroy($id)
     {
-        $tour = Tour::find($id)->delete();
-
+        $tour = Tour::find($id);
+        $img_path = $tour->image;
+        $tour->delete();
+        $dirs = Storage::delete('public/img/'.$img_path);
         return redirect()->route('admin.tour.index')
             ->with('success', 'Tour deleted successfully');
     }

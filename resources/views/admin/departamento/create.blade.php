@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('departamento.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('departamento.form')
+                            @include('admin.departamento.form')
 
                         </form>
                     </div>

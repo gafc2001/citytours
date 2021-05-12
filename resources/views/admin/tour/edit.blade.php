@@ -18,8 +18,8 @@
                         <form method="POST" action="{{ route('tour.update', $tour->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-
-                            @include('tour.form')
+                            
+                            @include('admin.tour.form')
 
                         </form>
                     </div>
