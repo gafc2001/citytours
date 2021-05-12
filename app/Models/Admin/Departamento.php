@@ -20,7 +20,7 @@ class Departamento extends Model
     
     static $rules = [
 		'departamento' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
     protected $perPage = 20;

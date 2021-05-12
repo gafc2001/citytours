@@ -9,10 +9,12 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 //Dashboard
-use App\Http\Controllers\DestinoController;
-use App\Http\Controllers\SubdestinoController;
-use App\Http\Controllers\LugarController;
-use App\Http\Controllers\ViajeController;
+use App\Http\Controllers\Admin\DepartamentoController;
+use App\Http\Controllers\Admin\LugaresTuristicoController;
+use App\Http\Controllers\Admin\TourController;
+use App\Http\Controllers\Admin\ViajeController;
+
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -42,9 +44,9 @@ Route::get('admin',[AdminController::class,'index'])->name('index');
 Auth::routes();
 
 //Dashboard
-Route::resource('admin/destinos', DestinoController::class);
-Route::resource('admin/subdestinos', SubdestinoController::class);
-Route::resource('admin/lugars', LugarController::class);
+Route::resource('admin/destinos', DepartamentoController::class);
+Route::resource('admin/subdestinos', LugaresTuristicoController::class);
+Route::resource('admin/lugars', TourController::class);
 Route::resource('admin/viajes', ViajeController::class);
 
 

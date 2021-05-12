@@ -22,7 +22,7 @@ class LugaresTuristico extends Model
     
     static $rules = [
 		'lugar_turistico' => 'required',
-		'imagen' => 'required',
+		'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
     protected $perPage = 20;

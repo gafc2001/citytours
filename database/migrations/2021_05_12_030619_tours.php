@@ -28,6 +28,6 @@ class Tours extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lugares_turisticos');
+        Schema::dropIfExists('tours');
     }
 }
