@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Update Subdestino
+    Update Departamento
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Subdestino</span>
+                        <span class="card-title">Update Departamento</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('subdestinos.update', $subdestino->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('departamento.update', $departamento->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('subdestino.form')
+                            @include('departamento.form')
 
                         </form>
                     </div>

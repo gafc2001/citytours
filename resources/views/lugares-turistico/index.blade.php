@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Destino
+    Lugares Turistico
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Destino') }}
+                                {{ __('Lugares Turistico') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('destinos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('lugar.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -31,31 +31,31 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="table">
+                            <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Name</th>
-										<th>Image</th>
+										<th>Lugar Turistico</th>
+										<th>Imagen</th>
+										<th>Id Departamento</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($destinos as $destino)
+                                    @foreach ($lugaresTuristicos as $lugaresTuristico)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $destino->name }}</td>
-											<td>
-                                                <img src="{{asset('storage/img/'.$destino->image)}}" height="70" alt="">
-                                            </td>
+											<td>{{ $lugaresTuristico->lugar_turistico }}</td>
+											<td>{{ $lugaresTuristico->imagen }}</td>
+											<td>{{ $lugaresTuristico->id_departamento }}</td>
 
                                             <td>
-                                                <form action="{{ route('destinos.destroy',$destino->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('destinos.show',$destino->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('destinos.edit',$destino->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('lugar.destroy',$lugaresTuristico->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('lugar.show',$lugaresTuristico->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('lugar.edit',$lugaresTuristico->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -68,9 +68,8 @@
                         </div>
                     </div>
                 </div>
-                {!! $destinos->links() !!}
+                {!! $lugaresTuristicos->links() !!}
             </div>
         </div>
     </div>
-    
 @endsection

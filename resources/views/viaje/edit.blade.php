@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
     Update Viaje
@@ -16,7 +16,7 @@
                         <span class="card-title">Update Viaje</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('viajes.update', $viaje->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('viaje.update', $viaje->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

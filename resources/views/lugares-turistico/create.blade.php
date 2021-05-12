@@ -1,26 +1,25 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Update Destino
+    Create Lugares Turistico
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="">
+        <div class="row">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Destino</span>
+                        <span class="card-title">Create Lugares Turistico</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('destinos.update', $destino->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('lugar.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('destino.form')
+                            @include('lugares-turistico.form')
 
                         </form>
                     </div>

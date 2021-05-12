@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViajesTable extends Migration
+class Viajes extends Migration
 {
     /**
      * Run the migrations.
@@ -17,9 +17,12 @@ class CreateViajesTable extends Migration
             $table->id();
             $table->time('time')->default('00:00');
             $table->date('date');
+            $table->integer('tickets');
+            $table->decimal('price', $precision = 8, $scale = 2);
+            $table->decimal('discount',$precision = 8, $scale = 2);
             $table->timestamps();
-            $table->unsignedBigInteger('id_destination')->nullable();
-            $table->foreign('id_destination')->references('id')->on('destinos');
+            $table->unsignedBigInteger('id_lugar')->nullable();
+            $table->foreign('id_lugar')->references('id')->on('lugares_turisticos');
         });
     }
 

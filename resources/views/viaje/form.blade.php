@@ -3,18 +3,33 @@
         
         <div class="form-group">
             {{ Form::label('time') }}
-            {{ Form::time('time', $viaje->time, ['class' => 'form-control' . ($errors->has('time') ? ' is-invalid' : ''), 'placeholder' => 'Time']) }}
+            {{ Form::text('time', $viaje->time, ['class' => 'form-control' . ($errors->has('time') ? ' is-invalid' : ''), 'placeholder' => 'Time']) }}
             {!! $errors->first('time', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('date') }}
-            {{ Form::date('date', $viaje->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date']) }}
+            {{ Form::text('date', $viaje->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date']) }}
             {!! $errors->first('date', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_destination') }}
-            {{ Form::select('id_destination', $destinos,null,$attributes = ['class' => 'form-control' . ($errors->has('id_destination') ? ' is-invalid' : '')]) }}
-            {!! $errors->first('id_destination', '<div class="invalid-feedback">:message</p>') !!}
+            {{ Form::label('tickets') }}
+            {{ Form::text('tickets', $viaje->tickets, ['class' => 'form-control' . ($errors->has('tickets') ? ' is-invalid' : ''), 'placeholder' => 'Tickets']) }}
+            {!! $errors->first('tickets', '<div class="invalid-feedback">:message</p>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('price') }}
+            {{ Form::text('price', $viaje->price, ['class' => 'form-control' . ($errors->has('price') ? ' is-invalid' : ''), 'placeholder' => 'Price']) }}
+            {!! $errors->first('price', '<div class="invalid-feedback">:message</p>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('discount') }}
+            {{ Form::text('discount', $viaje->discount, ['class' => 'form-control' . ($errors->has('discount') ? ' is-invalid' : ''), 'placeholder' => 'Discount']) }}
+            {!! $errors->first('discount', '<div class="invalid-feedback">:message</p>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('id_lugar') }}
+            {{ Form::text('id_lugar', $viaje->id_lugar, ['class' => 'form-control' . ($errors->has('id_lugar') ? ' is-invalid' : ''), 'placeholder' => 'Id Lugar']) }}
+            {!! $errors->first('id_lugar', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
     </div>

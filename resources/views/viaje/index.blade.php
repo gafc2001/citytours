@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
     Viaje
@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('viajes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('viaje.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -31,14 +31,17 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="table">
+                            <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
                                         
 										<th>Time</th>
 										<th>Date</th>
-										<th>Id Destination</th>
+										<th>Tickets</th>
+										<th>Price</th>
+										<th>Discount</th>
+										<th>Id Lugar</th>
 
                                         <th></th>
                                     </tr>
@@ -50,12 +53,15 @@
                                             
 											<td>{{ $viaje->time }}</td>
 											<td>{{ $viaje->date }}</td>
-											<td>{{ $viaje->destino }}</td>
+											<td>{{ $viaje->tickets }}</td>
+											<td>{{ $viaje->price }}</td>
+											<td>{{ $viaje->discount }}</td>
+											<td>{{ $viaje->id_lugar }}</td>
 
                                             <td>
-                                                <form action="{{ route('viajes.destroy',$viaje->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('viajes.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('viajes.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('viaje.destroy',$viaje->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('viaje.show',$viaje->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('viaje.edit',$viaje->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -72,5 +78,4 @@
             </div>
         </div>
     </div>
-    
 @endsection
