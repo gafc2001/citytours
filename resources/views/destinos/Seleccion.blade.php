@@ -5,7 +5,13 @@
 
        @foreach ($subdestinos as $subdestino)
        <p><strong> SUBDESTINO:</strong> {{$subdestino->subdestino}} </p>
-       <p><strong> IMAGEN DEL SUBDESTINO:</strong> {{$subdestino->imagenS}} </p>
+       
+       <p><strong>IMAGEN DEL SUBDESTINO </strong>
+       <div class ="card">
+              <img class="card-img-top" src="{{asset($subdestino->imagenS)}}"  alt="">
+       </div>
+       </p>
+
        <p><strong>NOMBRE DEL LUGAR TURISTICO DE SUBDESTINO:</strong> {{$subdestino->lugar}} </p>
        <p><strong>IMAGEN DEL LUGAR:</strong> {{$subdestino->imagenL}} </p>
        <p><strong>PRECIO DEL LUGAR:</strong>  {{$subdestino->precio}} </p>
