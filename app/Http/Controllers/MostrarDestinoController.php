@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Destino;
-use App\Models\Subdestino;
+use App\Models\Admin\Departamento;
 use Illuminate\Http\Request;
 
 class MostrarDestinoController extends Controller
 {
     public function index(){
-        $destinos= Destino::paginate();
+        $destinos= Departamento::paginate();
 
         return view('destinos.destino',compact('destinos'));
 
