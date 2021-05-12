@@ -13,6 +13,7 @@ use App\Http\Controllers\DestinoController;
 use App\Http\Controllers\SubdestinoController;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\ViajeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +30,16 @@ Route::get('/',HomeController::class );
 
 Route::get('compra', [CompraController::class,'index']);
 Route::get('compra/resumen/{compra}', [CompraController::class,'show']);
-
-
+Route::get('destinos', [MostrarDestinoController::class,'index'])->name('Mostrardestinos.index');
+Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('MostrarSubdestino.show');
 // Route::get('destinos', [DestinoController::class,'index']);
 // Route::get('destinos/{destino}', [DestinoController::class,'show']);
 
 
-Route::get('registrar',[UserController::class,'create']);
-
-Route::get('login', [LoginController::class,'index']);
-Route::post('login', [LoginController::class,'login'])->name('login');
-
 
 Route::get('admin',[AdminController::class,'index'])->name('index');
 
-//Auth::routes();
+Auth::routes();
 
 //Dashboard
 Route::resource('admin/destinos', DestinoController::class);
@@ -52,8 +48,8 @@ Route::resource('admin/lugars', LugarController::class);
 Route::resource('admin/viajes', ViajeController::class);
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('destinos', [MostrarDestinoController::class,'index'])->name('Mostrardestinos.index');
-Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('MostrarSubdestino.show');
 
-Route::get('/registrar',[UserController::class,'create']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
