@@ -1,7 +1,7 @@
 @extends('admin.index')
 
 @section('template_title')
-    {{ $destino->name ?? 'Show Destino' }}
+    {{ $subdestino->name ?? 'Show Subdestino' }}
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Destino</span>
+                            <span class="card-title">Show Subdestino</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('destinos.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('subdestinos.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -22,12 +22,15 @@
                         
                         <div class="form-group">
                             <strong>Name:</strong>
-                            {{ $destino->name }}
+                            {{ $subdestino->name }}
                         </div>
                         <div class="form-group">
                             <strong>Image:</strong>
-                            <br>
-                            <img src="{{ asset('storage/img/'.$destino->image) }}" alt="">
+                            {{ $subdestino->image }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Id Destination:</strong>
+                            {{ $subdestino->id_destination }}
                         </div>
 
                     </div>

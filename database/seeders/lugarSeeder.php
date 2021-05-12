@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Subdestino;
+use App\Models\Lugar;
 use Illuminate\Database\Seeder;
 
-class SubdestinoSeeder extends Seeder
+class lugarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class SubdestinoSeeder extends Seeder
      */
     public function run()
     {
-        Subdestino::factory(10)->create();
+        Lugar::factory(15)->create();
     }
 }

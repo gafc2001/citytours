@@ -19,7 +19,6 @@ class CreateSubdestinosTable extends Migration
             $table->string('image');
             $table->timestamps();
             $table->unsignedBigInteger('id_destination')->nullable();
-            $table->integer('user_id')->unsigned();
             $table->foreign('id_destination')->references('id')->on('destinos');
         });
     }

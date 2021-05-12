@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Destino;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class DestinoController
@@ -43,12 +44,19 @@ class DestinoController extends Controller
      */
     public function store(Request $request)
     {
+        
         request()->validate(Destino::$rules);
+        $image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img',$image);
 
-        $destino = Destino::create($request->all());
+        $destino = Destino::insert([
+                'name' => $request->name,
+                'image' =>$image
+        ]);
 
         return redirect()->route('destinos.index')
             ->with('success', 'Destino created successfully.');
+        
     }
 
     /**
@@ -87,12 +95,21 @@ class DestinoController extends Controller
     public function update(Request $request, Destino $destino)
     {
         request()->validate(Destino::$rules);
+        $old_image = $destino->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
 
-        $destino->update($request->all());
+        $new_image = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('public/img',$new_image);
+        
+        $destino->update([
+            'name' => $request->name,
+            'image' => $new_image
+        ]);
 
         return redirect()->route('destinos.index')
             ->with('success', 'Destino updated successfully');
     }
+
 
     /**
      * @param int $id
@@ -101,8 +118,11 @@ class DestinoController extends Controller
      */
     public function destroy($id)
     {
-        $destino = Destino::find($id)->delete();
 
+        $destino = Destino::find($id);
+        $img_path = $destino->image;
+        $destino->delete();
+        $dirs = Storage::delete('public/img/'.$img_path);
         return redirect()->route('destinos.index')
             ->with('success', 'Destino deleted successfully');
     }
