@@ -3,7 +3,7 @@
 @section('title','destinos')
 
 @section('content')
-       <h1>Directorio de destinos  aqui</h1> 
+       <h1>Directorio de destinos aqui</h1> 
        <ul>
 
               @foreach ($destinos as $destino)
