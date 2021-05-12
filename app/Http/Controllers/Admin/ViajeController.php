@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Viaje;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Viaje;
+use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
 
 /**
  * Class ViajeController
- * @package App\Http\Controllers
+ * @package App\Http\Controllers\Admin
  */
 class ViajeController extends Controller
 {
@@ -18,9 +20,11 @@ class ViajeController extends Controller
      */
     public function index()
     {
-        $viajes = Viaje::paginate();
+        $viajes = Viaje::join('lugares_turisticos','lugares_turisticos.id','=','viajes.id_lugar')
+                        ->select('viajes.*','lugares_turisticos.lugar_turistico')
+                        ->paginate();
 
-        return view('viaje.index', compact('viajes'))
+        return view('admin.viaje.index', compact('viajes'))
             ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
     }
 
@@ -32,7 +36,8 @@ class ViajeController extends Controller
     public function create()
     {
         $viaje = new Viaje();
-        return view('viaje.create', compact('viaje'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.viaje.create', compact('viaje','lugares'));
     }
 
     /**
@@ -46,9 +51,10 @@ class ViajeController extends Controller
         request()->validate(Viaje::$rules);
 
         $viaje = Viaje::create($request->all());
-
+        
         return redirect()->route('viaje.index')
             ->with('success', 'Viaje created successfully.');
+        // return dd($request->all());
     }
 
     /**
@@ -60,8 +66,8 @@ class ViajeController extends Controller
     public function show($id)
     {
         $viaje = Viaje::find($id);
-
-        return view('viaje.show', compact('viaje'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.viaje.show', compact('viaje','lugares'));
     }
 
     /**
@@ -74,7 +80,7 @@ class ViajeController extends Controller
     {
         $viaje = Viaje::find($id);
 
-        return view('viaje.edit', compact('viaje'));
+        return view('admin.viaje.edit', compact('viaje'));
     }
 
     /**

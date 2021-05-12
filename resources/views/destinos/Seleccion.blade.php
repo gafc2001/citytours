@@ -22,7 +22,7 @@
        </div>
        </p>
 
-       <a href="{{route('compra.show',$subdestino->tourid)}}">seleccionar sitio</a>
+       <a href="{{route('compra.show',$subdestino->turisticoid)}}">seleccionar lugar turistico</a>
        @endforeach
        
 

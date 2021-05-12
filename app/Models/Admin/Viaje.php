@@ -24,15 +24,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Viaje extends Model
 {
-    
-    static $rules = [
-		'time' => 'required',
-		'date' => 'required',
-		'tickets' => 'required',
-		'price' => 'required',
-		'discount' => 'required',
-    ];
+    public $timestamps = false;
 
+    static $rules = [
+		'time' => 'required|date_format:H:i',
+		'date' => 'required|date_format:Y-m-d',
+		'tickets' => 'required|integer|between:1,100',
+		'price' => 'required:',
+		'discount' => 'required|numeric|between:0,99.99',
+    ];
+    
     protected $perPage = 20;
 
     /**

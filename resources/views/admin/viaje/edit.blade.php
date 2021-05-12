@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Update Viaje
@@ -20,7 +20,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('viaje.form')
+                            @include('admin.viaje.form')
 
                         </form>
                     </div>

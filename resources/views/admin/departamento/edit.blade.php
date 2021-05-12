@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Update Departamento
@@ -20,7 +20,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('departamento.form')
+                            @include('admin.departamento.form')
 
                         </form>
                     </div>

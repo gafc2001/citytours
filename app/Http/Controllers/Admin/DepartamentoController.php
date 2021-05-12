@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Departamento;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class DepartamentoController
- * @package App\Http\Controllers
+ * @package App\Http\Controllers\Admin
  */
 class DepartamentoController extends Controller
 {
@@ -45,10 +47,16 @@ class DepartamentoController extends Controller
     {
         request()->validate(Departamento::$rules);
 
-        $departamento = Departamento::create($request->all());
-
-        return redirect()->route('admin.departamento.index')
+        $image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$image);
+        
+        $departamento = Departamento::insert([
+            'departamento' => $request->departamento,
+            'imagen' => $image
+        ]);
+        return redirect()->route('departamento.index')
             ->with('success', 'Departamento created successfully.');
+        // return dd($request->all());
     }
 
     /**
@@ -88,10 +96,21 @@ class DepartamentoController extends Controller
     {
         request()->validate(Departamento::$rules);
 
-        $departamento->update($request->all());
+        $old_image = $departamento->image;
+        $dirs = Storage::delete('public/img/'.$old_image);
 
-        return redirect()->route('admin.departamento.index')
-            ->with('success', 'Departamento updated successfully');
+        $new_image = $request->file('imagen')->getClientOriginalName();
+        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+
+        $departamento->update([
+            'departamento' => $request->departamento,
+            'imagen' => $new_image
+        ]);
+
+        return redirect()->route('departamento.index')
+        ->with('success', 'Departamento updated successfully');
+        
+        
     }
 
     /**
@@ -101,9 +120,11 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        $departamento = Departamento::find($id)->delete();
-
-        return redirect()->route('admin.departamento.index')
+        $departamento = Departamento::find($id);
+        $img_path = $departamento->image;
+        $departamento->delete();
+        $dirs = Storage::delete('public/img/'.$img_path);
+        return redirect()->route('departamento.index')
             ->with('success', 'Departamento deleted successfully');
     }
 }

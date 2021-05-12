@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Create Departamento
@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('departamento.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('departamento.form')
+                            @include('admin.departamento.form')
 
                         </form>
                     </div>

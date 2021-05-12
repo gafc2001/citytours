@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Departamento
@@ -48,8 +48,9 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $departamento->departamento }}</td>
-											<td>{{ $departamento->imagen }}</td>
-
+											<td>
+                                                <img src="{{ asset('storage/img/'.$departamento->imagen) }}" height="80" alt="">
+                                            </td>
                                             <td>
                                                 <form action="{{ route('departamento.destroy',$departamento->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('departamento.show',$departamento->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>

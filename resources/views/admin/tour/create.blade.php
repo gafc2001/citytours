@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     Create Tour
@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('tour.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('tour.form')
+                            @include('admin.tour.form')
 
                         </form>
                     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('template_title')
     {{ $lugaresTuristico->name ?? 'Show Lugares Turistico' }}
@@ -14,7 +14,7 @@
                             <span class="card-title">Show Lugares Turistico</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('lugar.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('lugares.index') }}"> Back</a>
                         </div>
                     </div>
 

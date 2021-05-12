@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\LugaresTuristico;
 use App\Models\Admin\Tour;
 use App\Models\Admin\Viaje;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class compraController extends Controller
     }
     public function show($lugarid){
         $viaje= Viaje::where('id_lugar',$lugarid)->get();
-        $lugar= Tour::find($lugarid);
+        $lugar= LugaresTuristico::find($lugarid);
  
         return view('compra.seleccionCompra',compact('lugar'),compact('viaje'));
     }
