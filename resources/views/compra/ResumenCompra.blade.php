@@ -3,6 +3,6 @@
 @section('title','Resumen')
 
 @section('content')
-       <h1>Resumen de la compra aqui : {{$detalles}}</h1> 
+       <h1>Resumen de la compra aqui :</h1> 
 @endsection
 
