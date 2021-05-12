@@ -1,8 +1,5 @@
 
 
-
-
-
 @extends('layouts.plantilla')
 
 @section('title','destinos')
