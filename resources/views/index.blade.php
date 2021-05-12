@@ -1,5 +1,4 @@
 @extends('layouts.plantilla')
-
 @section('title','Principal')
 
 @section('content')
@@ -64,6 +63,5 @@
        @auth
               {{auth()->user()->username}}
        @endauth
-    <!-- SLIDER -->
     @section('content')
 @endsection
