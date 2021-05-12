@@ -11,8 +11,18 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    //aplicar php artisan migrate:fresh --seed para generar  tus datos
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //llama al archivo DestinoSeeder para que pueda leer todo el contenido que hayas puesto de dicha modelo
+        $this->call(DestinoSeeder::class);
+
+        $this->call(UserSeeder::class);
+        
+        $this->call(SubdestinoSeeder::class);
+        
+        $this->call(lugarSeeder::class);
+
+
     }
 }

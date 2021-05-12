@@ -1,8 +1,15 @@
-@extends('layouts.plantilla')
 
-@section('title','Seleccion '.$destino)
+       <h1> NOMBRE DEL DESTINO {{$destino->name}} </h1> 
+       <h1>  IMAGEN DEL DESTINO{{$destino->image}}</h1> 
 
-@section('content')
-       <h1> Destino seleccionado: {{$destino}}  </h1> 
-@endsection
+       @foreach ($subdestinos as $subdestino)
+       <li>NOMBRE SUBDESTINO: {{$subdestino->subdestino}} </li>
+       <li> IMAGEN DEL SUBDESTINO: {{$subdestino->imagenS}} </li>
+       <li>NOMBRE DEL LUGAR TURISTICO DE SUBDESTINO: {{$subdestino->lugar}} </li>
+       <li>IMAGEN DEL LUGAR: {{$subdestino->imagenL}} </li>
+
+       <a href="">seleccionar sitio</a>
+       @endforeach
+       
+
 
