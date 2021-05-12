@@ -18,6 +18,8 @@ class Tours extends Migration
             $table->string('tour');
             $table->text('details');
             $table->string('imagen');
+            $table->unsignedBigInteger('idlugar')->nullable();
+            $table->foreign('idlugar')->references('id')->on('lugares_turisticos');
         });
     }
 

@@ -1,22 +1,28 @@
 
-       <h1> BIENVENIDO AL   DESTINO {{$destino->name}} </h1> 
-       <h1>  IMAGEN DEL DESTINO: {{$destino->image}}</h1>
+       <h1> BIENVENIDO AL   DESTINO {{$destino->departamento}} </h1> 
+       <h1>  IMAGEN DEL DESTINO: 
+              <img class="card-img-top" src="{{asset('storage/img/'.$destino->imagen)}}"  alt="">
+       </h1>
        <a href="{{route('Mostrardestinos.index')}}">Volver a destinos</a> 
 
        @foreach ($subdestinos as $subdestino)
-       <p><strong> SUBDESTINO:</strong> {{$subdestino->subdestino}} </p>
+       <p><strong> NOMBRE DEL LUGAR TURISTICO:</strong> {{$subdestino->lugar_turistico}} </p>
        
-       <p><strong>IMAGEN DEL SUBDESTINO </strong>
+       <p><strong>IMAGEN DEL LUGAR TURISTICO </strong>
        <div class ="card">
-              <img class="card-img-top" src="{{asset($subdestino->imagenS)}}"  alt="">
+              <img class="card-img-top" src="{{asset('storage/img/'.$subdestino->imagenL)}}"  alt="">
        </div>
        </p>
 
-       <p><strong>NOMBRE DEL LUGAR TURISTICO DE SUBDESTINO:</strong> {{$subdestino->lugar}} </p>
-       <p><strong>IMAGEN DEL LUGAR:</strong> {{$subdestino->imagenL}} </p>
-       <p><strong>PRECIO DEL LUGAR:</strong>  {{$subdestino->precio}} </p>
+       <p><strong>NOMBRE DEL TOURS:</strong> {{$subdestino->tour}} </p>
 
-       <a href="{{route('compra.show',$subdestino->lugarid)}}">seleccionar sitio</a>
+       <p><strong>IMAGEN DEL TOURS: </strong>
+       <div class ="card">
+              <img class="card-img-top" src="{{asset('storage/img/'.$subdestino->imagenT)}}"  alt="">
+       </div>
+       </p>
+
+       <a href="{{route('compra.show',$subdestino->tourid)}}">seleccionar sitio</a>
        @endforeach
        
 
