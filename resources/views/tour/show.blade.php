@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    {{ $lugar->name ?? 'Show Lugar' }}
+    {{ $tour->name ?? 'Show Tour' }}
 @endsection
 
 @section('content')
@@ -11,34 +11,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Lugar</span>
+                            <span class="card-title">Show Tour</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('lugars.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('tour.index') }}"> Back</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
-                            {{ $lugar->name }}
+                            <strong>Tour:</strong>
+                            {{ $tour->tour }}
                         </div>
                         <div class="form-group">
                             <strong>Details:</strong>
-                            {{ $lugar->details }}
+                            {{ $tour->details }}
                         </div>
                         <div class="form-group">
-                            <strong>Image:</strong>
-                            {{ $lugar->image }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Precio:</strong>
-                            {{ $lugar->precio }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Idsubdestination:</strong>
-                            {{ $lugar->idsubdestination }}
+                            <strong>Imagen:</strong>
+                            {{ $tour->imagen }}
                         </div>
 
                     </div>

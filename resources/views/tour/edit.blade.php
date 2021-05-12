@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Update Lugar
+    Update Tour
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Lugar</span>
+                        <span class="card-title">Update Tour</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('lugars.update', $lugar->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('tour.update', $tour->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('lugar.form')
+                            @include('tour.form')
 
                         </form>
                     </div>

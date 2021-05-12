@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
     Create Viaje
@@ -16,7 +16,7 @@
                         <span class="card-title">Create Viaje</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('viajes.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('viaje.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('viaje.form')

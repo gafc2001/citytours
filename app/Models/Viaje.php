@@ -10,12 +10,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $time
  * @property $date
+ * @property $tickets
+ * @property $price
+ * @property $discount
  * @property $created_at
  * @property $updated_at
- * @property $id_destination
+ * @property $id_lugar
  *
  * @property Boleta[] $boletas
- * @property Destino $destino
+ * @property LugaresTuristico $lugaresTuristico
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -23,8 +26,11 @@ class Viaje extends Model
 {
     
     static $rules = [
-		'time' => 'required|date_format:H:i',
-		'date' => 'required|date_format:Y-m-d',
+		'time' => 'required',
+		'date' => 'required',
+		'tickets' => 'required',
+		'price' => 'required',
+		'discount' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +40,7 @@ class Viaje extends Model
      *
      * @var array
      */
-    protected $fillable = ['time','date','id_destination'];
+    protected $fillable = ['time','date','tickets','price','discount','id_lugar'];
 
 
     /**
@@ -48,9 +54,9 @@ class Viaje extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function destino()
+    public function lugaresTuristico()
     {
-        return $this->hasOne('App\Models\Destino', 'id', 'id_destination');
+        return $this->hasOne('App\Models\LugaresTuristico', 'id', 'id_lugar');
     }
     
 

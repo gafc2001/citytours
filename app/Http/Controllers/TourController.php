@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Viaje;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 
 /**
- * Class ViajeController
+ * Class TourController
  * @package App\Http\Controllers
  */
-class ViajeController extends Controller
+class TourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class ViajeController extends Controller
      */
     public function index()
     {
-        $viajes = Viaje::paginate();
+        $tours = Tour::paginate();
 
-        return view('viaje.index', compact('viajes'))
-            ->with('i', (request()->input('page', 1) - 1) * $viajes->perPage());
+        return view('tour.index', compact('tours'))
+            ->with('i', (request()->input('page', 1) - 1) * $tours->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class ViajeController extends Controller
      */
     public function create()
     {
-        $viaje = new Viaje();
-        return view('viaje.create', compact('viaje'));
+        $tour = new Tour();
+        return view('tour.create', compact('tour'));
     }
 
     /**
@@ -43,12 +43,12 @@ class ViajeController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Viaje::$rules);
+        request()->validate(Tour::$rules);
 
-        $viaje = Viaje::create($request->all());
+        $tour = Tour::create($request->all());
 
-        return redirect()->route('viaje.index')
-            ->with('success', 'Viaje created successfully.');
+        return redirect()->route('tour.index')
+            ->with('success', 'Tour created successfully.');
     }
 
     /**
@@ -59,9 +59,9 @@ class ViajeController extends Controller
      */
     public function show($id)
     {
-        $viaje = Viaje::find($id);
+        $tour = Tour::find($id);
 
-        return view('viaje.show', compact('viaje'));
+        return view('tour.show', compact('tour'));
     }
 
     /**
@@ -72,26 +72,26 @@ class ViajeController extends Controller
      */
     public function edit($id)
     {
-        $viaje = Viaje::find($id);
+        $tour = Tour::find($id);
 
-        return view('viaje.edit', compact('viaje'));
+        return view('tour.edit', compact('tour'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Viaje $viaje
+     * @param  Tour $tour
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Viaje $viaje)
+    public function update(Request $request, Tour $tour)
     {
-        request()->validate(Viaje::$rules);
+        request()->validate(Tour::$rules);
 
-        $viaje->update($request->all());
+        $tour->update($request->all());
 
-        return redirect()->route('viaje.index')
-            ->with('success', 'Viaje updated successfully');
+        return redirect()->route('tour.index')
+            ->with('success', 'Tour updated successfully');
     }
 
     /**
@@ -101,9 +101,9 @@ class ViajeController extends Controller
      */
     public function destroy($id)
     {
-        $viaje = Viaje::find($id)->delete();
+        $tour = Tour::find($id)->delete();
 
-        return redirect()->route('viaje.index')
-            ->with('success', 'Viaje deleted successfully');
+        return redirect()->route('tour.index')
+            ->with('success', 'Tour deleted successfully');
     }
 }

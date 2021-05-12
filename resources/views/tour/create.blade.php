@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Create Destino
+    Create Tour
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Destino</span>
+                        <span class="card-title">Create Tour</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('destinos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('tour.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('destino.form')
+                            @include('tour.form')
 
                         </form>
                     </div>

@@ -1,7 +1,7 @@
-@extends('admin.index')
+@extends('layouts.app')
 
 @section('template_title')
-    Lugar
+    Departamento
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Lugar') }}
+                                {{ __('Departamento') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('lugars.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('departamento.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,32 +36,24 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Name</th>
-										<th>Details</th>
-										<th>Image</th>
-										<th>Precio</th>
-										<th>Idsubdestination</th>
+										<th>Departamento</th>
+										<th>Imagen</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($lugars as $lugar)
+                                    @foreach ($departamentos as $departamento)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $lugar->name }}</td>
-											<td>{{ $lugar->details }}</td>
-											<td>
-                                                <img src="{{asset('storage/img/'.$lugar->image)}}" height="100" alt="">
-                                            </td>
-											<td>{{ $lugar->precio }}</td>
-											<td>{{ $lugar->subdestino }}</td>
+											<td>{{ $departamento->departamento }}</td>
+											<td>{{ $departamento->imagen }}</td>
 
                                             <td>
-                                                <form action="{{ route('lugars.destroy',$lugar->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('lugars.show',$lugar->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('lugars.edit',$lugar->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('departamento.destroy',$departamento->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('departamento.show',$departamento->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('departamento.edit',$departamento->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -74,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $lugars->links() !!}
+                {!! $departamentos->links() !!}
             </div>
         </div>
     </div>
