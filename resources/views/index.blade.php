@@ -59,5 +59,10 @@
         </div>
       </section>
     
+      {{-- Uso de usuario logueado --}}
+      <h1>@lang('Home')</h1> 
+       @auth
+              {{auth()->user()->username}}
+       @endauth
     <!-- SLIDER -->
 @endsection

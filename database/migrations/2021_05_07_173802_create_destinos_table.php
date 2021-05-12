@@ -13,7 +13,7 @@ class CreateDestinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('destinos', function (Blueprint $table) {
+        Schema::create('Departamento', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('image');
@@ -28,6 +28,6 @@ class CreateDestinosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('destinos');
+        Schema::dropIfExists('Departamento');
     }
 }

@@ -13,13 +13,13 @@ class CreateSubdestinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('subdestinos', function (Blueprint $table) {
+        Schema::create('Lugar-Turistico', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('image');
             $table->timestamps();
-            $table->unsignedBigInteger('id_destination')->nullable();
-            $table->foreign('id_destination')->references('id')->on('destinos');
+            $table->unsignedBigInteger('id_departamento')->nullable();
+            $table->foreign('id_departamento')->references('id')->on('Departamento');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSubdestinosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subdestinos');
+        Schema::dropIfExists('Lugar-Turistico');
     }
 }
