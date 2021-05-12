@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Destino;
+use App\Models\Admin\Departamento;
+use App\Models\Admin\LugaresTuristico;
 use Illuminate\Http\Request;
-use App\Models\Subdestino;
+
 
 class MostrarSubdestinoController extends Controller
 {
@@ -47,11 +48,12 @@ class MostrarSubdestinoController extends Controller
      */
     public function show($destinos)
     {
-        $destino= Destino::find($destinos);
-        $subdestinos= Subdestino::join('lugars','lugars.idsubdestination','=','subdestinos.id')
-                            ->select('subdestinos.name as subdestino','lugars.name as lugar','subdestinos.image as imagenS','lugars.image as imagenL')
-                            ->where('subdestinos.id_destination','=',$destinos)
+        $destino= Departamento::find($destinos);
+        $subdestinos= LugaresTuristico::join('tours','tours.id_lugar_turistico','=','lugares_turisticos.id')
+                            ->select('lugares_turisticos.lugar_turistico as lugar_turistico','tours.id_lugar_turistico as turisticoid','tours.tour as tour','lugares_turisticos.imagen as imagenL','tours.imagen as imagenT')
+                            ->where('lugares_turisticos.id_departamento','=',$destinos)
                             ->get();
+
 
 
         return view('destinos.Seleccion',compact('subdestinos'),compact('destino'));

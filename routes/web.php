@@ -47,4 +47,10 @@ Route::resource('admin/lugares', LugaresTuristicoController::class);
 Route::resource('admin/tour', TourController::class);
 Route::resource('admin/viaje', ViajeController::class);
 
+
+Route::get('destinos/seleccioncompra/{lugarid}',[CompraController::class,'show'])->name('compra.show');
+
+Route::get('/registrar',[UserController::class,'create']);
+
+
 Auth::routes();

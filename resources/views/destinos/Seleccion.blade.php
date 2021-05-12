@@ -1,14 +1,28 @@
 
-       <h1> NOMBRE DEL DESTINO {{$destino->name}} </h1> 
-       <h1>  IMAGEN DEL DESTINO{{$destino->image}}</h1> 
+       <h1> BIENVENIDO AL   DESTINO {{$destino->departamento}} </h1> 
+       <h1>  IMAGEN DEL DESTINO: 
+              <img class="card-img-top" src="{{asset('storage/img/'.$destino->imagen)}}"  alt="">
+       </h1>
+       <a href="{{route('Mostrardestinos.index')}}">Volver a destinos</a> 
 
        @foreach ($subdestinos as $subdestino)
-       <li>NOMBRE SUBDESTINO: {{$subdestino->subdestino}} </li>
-       <li> IMAGEN DEL SUBDESTINO: {{$subdestino->imagenS}} </li>
-       <li>NOMBRE DEL LUGAR TURISTICO DE SUBDESTINO: {{$subdestino->lugar}} </li>
-       <li>IMAGEN DEL LUGAR: {{$subdestino->imagenL}} </li>
+       <p><strong> NOMBRE DEL LUGAR TURISTICO:</strong> {{$subdestino->lugar_turistico}} </p>
+       
+       <p><strong>IMAGEN DEL LUGAR TURISTICO </strong>
+       <div class ="card">
+              <img class="card-img-top" src="{{asset('storage/img/'.$subdestino->imagenL)}}"  alt="">
+       </div>
+       </p>
 
-       <a href="">seleccionar sitio</a>
+       <p><strong>NOMBRE DEL TOURS:</strong> {{$subdestino->tour}} </p>
+
+       <p><strong>IMAGEN DEL TOURS: </strong>
+       <div class ="card">
+              <img class="card-img-top" src="{{asset('storage/img/'.$subdestino->imagenT)}}"  alt="">
+       </div>
+       </p>
+
+       <a href="{{route('compra.show',$subdestino->turisticoid)}}">seleccionar lugar turistico</a>
        @endforeach
        
 
