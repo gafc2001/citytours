@@ -79,8 +79,8 @@ class ViajeController extends Controller
     public function edit($id)
     {
         $viaje = Viaje::find($id);
-
-        return view('admin.viaje.edit', compact('viaje'));
+        $lugares = LugaresTuristico::pluck('lugar_turistico','id');
+        return view('admin.viaje.edit', compact('viaje','lugares'));
     }
 
     /**
