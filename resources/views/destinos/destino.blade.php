@@ -1,4 +1,14 @@
 
+
+@extends('layouts.plantilla')
+
+@section('title','destinos')
+
+@section('content')
+       <h1>Directorio de destinos aqui</h1> 
+       <ul>
+
+
 <h1>Directorio de destinos  aqui</h1> 
 @foreach ($destinos as $destino)
 <p><strong>DESTINO:</strong>{{$destino->departamento}} </p>
@@ -13,6 +23,6 @@
 @endforeach
 {{$destinos->links()}}
       
-  
+
 
 
