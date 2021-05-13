@@ -41,8 +41,6 @@ Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->n
 
 Route::get('admin',[AdminController::class,'index'])->name('index');
 
-Auth::routes();
-
 //Dashboard
 Route::resource('admin/departamento', DepartamentoController::class);
 Route::resource('admin/lugares', LugaresTuristicoController::class);
@@ -56,5 +54,3 @@ Route::get('/registrar',[UserController::class,'create']);
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
