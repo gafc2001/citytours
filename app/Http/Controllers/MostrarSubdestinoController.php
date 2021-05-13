@@ -52,11 +52,12 @@ class MostrarSubdestinoController extends Controller
         $subdestinos= LugaresTuristico::join('tours','tours.id_lugar_turistico','=','lugares_turisticos.id')
                             ->select('lugares_turisticos.lugar_turistico as lugar_turistico','tours.id_lugar_turistico as turisticoid','tours.tour as tour','lugares_turisticos.imagen as imagenL','tours.imagen as imagenT')
                             ->where('lugares_turisticos.id_departamento','=',$destinos)
-                            ->get();
+                            ->paginate();
 
 
 
-        return view('destinos.Seleccion',compact('subdestinos'),compact('destino'));
+        return view('destinos.Seleccion',compact('subdestinos'),compact('destino')) 
+        ->with('i', (request()->input('page', 1) - 1) * $subdestinos->perPage());
     }
 
     /**
