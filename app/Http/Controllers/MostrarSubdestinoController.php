@@ -55,8 +55,7 @@ class MostrarSubdestinoController extends Controller
                             ->get();
 
 
-
-        return view('destinos.Seleccion',compact('subdestinos'),compact('destino'));
+        return view('subdestinos.show',compact('subdestinos','destino'));
     }
 
     /**

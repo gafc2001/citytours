@@ -3,7 +3,7 @@
        <h1>  IMAGEN DEL DESTINO: 
               <img class="card-img-top" src="{{asset('storage/img/'.$destino->imagen)}}"  alt="">
        </h1>
-       <a href="{{route('Mostrardestinos.index')}}">Volver a destinos</a> 
+       <a href="{{route('destinos.index')}}">Volver a destinos</a> 
 
        @foreach ($subdestinos as $subdestino)
        <p><strong> NOMBRE DEL LUGAR TURISTICO:</strong> {{$subdestino->lugar_turistico}} </p>

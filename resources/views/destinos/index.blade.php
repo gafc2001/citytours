@@ -8,7 +8,7 @@
        <img class="card-img-top" src="{{asset('storage/img/'.$destino->imagen)}}"  alt="">
 </div>
 </p>
-<a href={{route('MostrarSubdestino.show',$destino->id)}}>seleccionar destino</a>
+<a href={{route('destinos.show',$destino->id)}}>seleccionar destino</a>
     
 @endforeach
 {{$destinos->links()}}
