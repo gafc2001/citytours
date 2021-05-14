@@ -33,10 +33,12 @@ Route::get('/',HomeController::class );
 
 
 Route::get('destinos', [MostrarDestinoController::class,'index'])->name('destinos.index');
-Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('destinos.show');
+
 
 Route::get('destinos/comprar', [CompraController::class,'index'])->name('compra.index');
+Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('destinos.show');
 Route::get('destinos/comprar/{idlugarTuristico}', [CompraController::class,'show'])->name('compra.show');
+
 // Route::get('destinos', [DestinoController::class,'index']);
 // Route::get('destinos/{destino}', [DestinoController::class,'show']);
 

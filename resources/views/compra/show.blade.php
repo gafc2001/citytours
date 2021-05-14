@@ -1,35 +1,42 @@
-<!--ss@extends('layouts.plantilla')
+@extends('layouts.plantilla')
 
-ss@section('title','Resumen')
+@section('title','compra')
 
-ss@section('content')-->
+@section('content')
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-       <title>Document</title>
-</head>
-<body>
-       <p><strong>LUGAR TURISTICO SELECCIONADO: </strong>
-              <br>
-              
-       <select name="combo">
-
-       <option value=""></option>
-    
-       </select>
+       <p><strong>NOMBRE DEL SITIO TURISTICO SELECCIONADO : {{$lugar->lugar_turistico}} </strong></p>
        
+       <form action="">
+              <p><strong>FECHA:   </strong>
+                            {{Form::select('combo', $viaje, null, ['id'=>'select-fecha'])}}     
+              </p>
+              <label >
+                     PRECIO POR LUGAR TURISTICO:
+                     <br>
 
-</body>
+                     <input type=text name="price" id="price-select"  value="">
+              </label>
+              <br>
+              <label  >
+                     HORARIO DISPONIBLE:
+                     <br>
+                     
+                     <input type=text name="time" id="time-select" value="">
+              </label>
+              <br>
+              <label>
+                     ELIGE LA CANTIDAD:
+                     <br>
+                     <input type=text  value="">
+              </label>
+              <br>
+              <button type="submit">Finalizar compra</button>
+       </form>
+
+
+
+
+<script type="text/javascript"  src="{{asset('/js/show.js')}}"></script>
 </html>
 
-
-
-
-
-<!--ss@endsection-->
-
+@endsection
