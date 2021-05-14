@@ -20,7 +20,12 @@
                     <!-- Botones de Cambio -->
 
                     @foreach ($subdestinos as $subdestino) 
-                  <li data-target="#carouselExampleIndicators" data-slide-to="{{++$i}}" class="active"></li>
+                      @if ($loop->first)
+                      <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" class="active"></li>
+                      @else
+                      <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}"></li>
+                      @endif
+                      
                      @endforeach
                 </ol>
 
@@ -28,11 +33,21 @@
                 <div class="carousel-inner">
 
                 @foreach ($subdestinos as $subdestino)
+
+                  @if ($loop->first)
                   <div class="carousel-item active">
-                     <a href="{{route('compra.show',$subdestino->turisticoid)}}">
+                      <a href="{{route('compra.show',$subdestino->turisticoid)}}">
+                        <img class="d-block w-100" src="{{asset('storage/img/'.$subdestino->imagenL)}}" >
+                      </a>
+                    </div>
+                  @else
+                  <div class="carousel-item">
+                    <a href="{{route('compra.show',$subdestino->turisticoid)}}">
                       <img class="d-block w-100" src="{{asset('storage/img/'.$subdestino->imagenL)}}" >
                     </a>
                   </div>
+                  @endif
+                  
 
                 @endforeach
                 </div>

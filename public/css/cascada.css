@@ -97,7 +97,7 @@ section.contenido section.subdestinos-cont{
 
 .carousel-inner{
     border-radius: 30px;
-    display: flex;
+    display: absolute;
     position: absolute;
 }
 
