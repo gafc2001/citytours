@@ -39,6 +39,8 @@ Route::get('destinos/comprar', [CompraController::class,'index'])->name('compra.
 Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('destinos.show');
 Route::get('destinos/comprar/{idlugarTuristico}', [CompraController::class,'show'])->name('compra.show');
 
+
+Route::post('destinos/compra',[CompraController::class,'store'])->name('compra.store');
 // Route::get('destinos', [DestinoController::class,'index']);
 // Route::get('destinos/{destino}', [DestinoController::class,'show']);
 

@@ -6,15 +6,15 @@
 
        <p><strong>NOMBRE DEL SITIO TURISTICO SELECCIONADO : {{$lugar->lugar_turistico}} </strong></p>
        
-       <form action="">
+       <form action="{{route('compra.store')}}" method="POST">
+              @csrf
               <p><strong>FECHA:   </strong>
-                            {{Form::select('combo', $viaje, null, ['id'=>'select-fecha'])}}     
+                            {{Form::select('id_travel', $viaje, null, ['id'=>'select-fecha'])}}     
               </p>
-              <label >
-                     PRECIO POR LUGAR TURISTICO:
+              <label>
+                     FECHA SELECCIONADA:
                      <br>
-
-                     <input type=text name="price" id="price-select"  value="">
+                     <input type=text name="fecha"  id="date-select" value="">
               </label>
               <br>
               <label  >
@@ -24,15 +24,38 @@
                      <input type=text name="time" id="time-select" value="">
               </label>
               <br>
-              <label>
-                     ELIGE LA CANTIDAD:
+              <label >
+                     PRECIO POR ESTE HORARIO:
                      <br>
-                     <input type=text  value="">
+
+                     <input type=text name="price" id="price-select"  value="">
               </label>
               <br>
-              <button type="submit">Finalizar compra</button>
-       </form>
 
+              <label >
+              ¿CUANTOS BOLETOS QUIERES COMPRAR? :
+                     <br>
+
+                     <input type=text name="cantidad" id="cant-select"  value="">
+              </label>
+              <br>
+              <label >
+                     ID_USUARIO :
+                     <br>
+
+                     <input type=text name="user"   value="{{auth()->user()->id}}">
+              </label>
+              <br>
+              <label >
+                     ID_LUGAR :
+                     <br>
+
+                     <input type=text name="id_lugar"   value="{{$lugar->id}}">
+              </label>
+              <br>
+
+              <button href="{{route('compra.store',auth()->user()->id)}}" type="submit">Finalizar compra</button>
+       </form>
 
 
 
