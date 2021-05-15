@@ -42,7 +42,8 @@ Route::get('destinos/comprar/{idlugarTuristico}', [CompraController::class,'show
 // Verificación de cuenta para poder entrar
 //  ->middleware(['auth'])->name('/');
 
-Route::post('destinos/compra',[CompraController::class,'store'])->name('compra.store');
+Route::post('destinos/compra',[CompraController::class,'store'])->middleware(['auth'])->name('compra.store');
+
 
 
 
