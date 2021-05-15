@@ -56,7 +56,7 @@ class MostrarSubdestinoController extends Controller
 
 
 
-        return view('destinos.Seleccion',compact('subdestinos'),compact('destino')) 
+        return view('subdestinos.show',compact('subdestinos'),compact('destino')) 
         ->with('i', (request()->input('page', 1) - 1) * $subdestinos->perPage());
     }
 

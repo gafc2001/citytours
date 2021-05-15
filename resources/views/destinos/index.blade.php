@@ -5,9 +5,6 @@
 @section('title','destinos')
 
 @section('content')
-       <h1>Directorio de destinos aqui</h1> 
-       <ul>
-
 
 <h1>Directorio de destinos  aqui</h1> 
 @foreach ($destinos as $destino)
@@ -19,12 +16,12 @@
        <img class="card-img-top" src="{{asset('storage/img/'.$destino->imagen)}}"  alt="">
 </div>
 </p>
-<a href={{route('MostrarSubdestino.show',$destino->id)}}>seleccionar destino</a>
+<a href={{route('destinos.show',$destino->id)}}>seleccionar destino</a>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 <section class="hero-section">
   <div class="card-grid">
-    <a class="card" href="{{route('MostrarSubdestino.show',$destino->id)}}">
+    <a class="card" href="{{route('destinos.show',$destino->id)}}">
       <div class="card__background" style="background-image: url({{asset('storage/img/'.$destino->imagen)}})"></div>
       <div class="card__content">
         <p class="card__category">DESTINO:</p>

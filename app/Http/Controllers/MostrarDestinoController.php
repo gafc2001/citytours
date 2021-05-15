@@ -12,7 +12,7 @@ class MostrarDestinoController extends Controller
     public function index(){
         $destinos= Departamento::paginate();
 
-        return view('destinos.destino',compact('destinos'));
+        return view('destinos.index',compact('destinos'));
 
     }
     public function show(){

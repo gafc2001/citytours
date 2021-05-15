@@ -38,7 +38,7 @@
         <div class="list-container">
             <ul class="list">
                 <li><a href="" class="activo">INICIO</a></li>
-                <li><a href="{{route('Mostrardestinos.index')}}" class="activo">DESTINOS</a>
+                <li><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
                 </li>
                 <li><a href="" class="activo">NOSOTROS</a></li>
