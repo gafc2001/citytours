@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',HomeController::class );
+Route::get('/',HomeController::class);
 
 
 
@@ -39,8 +39,11 @@ Route::get('destinos/comprar', [CompraController::class,'index'])->name('compra.
 Route::get('destinos/{destino}', [MostrarSubdestinoController::class,'show'])->name('destinos.show');
 Route::get('destinos/comprar/{idlugarTuristico}', [CompraController::class,'show'])->name('compra.show');
 
+// Verificación de cuenta para poder entrar
+//  ->middleware(['auth'])->name('/');
 
-Route::post('destinos/compra',[CompraController::class,'store'])->name('compra.store');
+Route::post('destinos/compra',[CompraController::class,'store'])->middleware(['auth'])->name('compra.store');
+
 
 
 
@@ -58,4 +61,4 @@ Route::resource('admin/viaje', ViajeController::class);
 Route::get('/registrar',[UserController::class,'create']);
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
