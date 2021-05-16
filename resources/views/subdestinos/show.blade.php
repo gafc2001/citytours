@@ -82,16 +82,19 @@
                         
                     @foreach ($subdestinos as $subdestino) 
                         <div class="sitio1">
-                            <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="">
-                            <p>{{$subdestino->tour}} </p>
+                            <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="" >
+                            <p>{{$subdestino->tour}}</p>
                         </div>
                         @endforeach
      
                     </section>
+
+
             </section>
 
-                
 
+
+              
            
         </section>
     </section>
