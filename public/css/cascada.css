@@ -78,7 +78,7 @@ section.contenido section.subdestinos-cont{
 .slide {
     width: 550px;
     height: 700px;
-    display: flex;
+    display: block;
     position: absolute;
     border-radius: 30px;
 }
