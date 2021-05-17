@@ -37,10 +37,16 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
-                <li><a href="" class="activo">INICIO</a></li>
+                <li><a href="" class="activo">INICIO</a>
                 <li><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
                 </li>
+                 @isset(auth()->user()->is_admin)
+                 @if (auth()->user()->is_admin)
+                 <li><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
+                 @endif
+                
+                 @endisset
                 <li><a href="" class="activo">NOSOTROS</a></li>
                 <li><a href="" class="activo">CONTACTO</a></li>
                 <li><a href="" class="activo">USER</a>

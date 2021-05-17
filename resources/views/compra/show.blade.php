@@ -4,6 +4,7 @@
 
 @section('content')
 
+
        <p><strong>NOMBRE DEL SITIO TURISTICO SELECCIONADO : {{$lugar->lugar_turistico}} </strong></p>
        
        <form action="{{route('compra.store')}}" method="POST">
@@ -54,8 +55,9 @@
               </label>
               <br>
 
-              <button href="{{route('compra.store',auth()->user()->id)}}" type="submit">Finalizar compra</button>
+              <button href="{{route('compra.store')}}" type="submit">Finalizar compra</button>
        </form>
+       <a  href="{{route('subdestinos.show',$lugar->id_departamento)}}">Regresar lugares turisticos</a>
 
 
 
