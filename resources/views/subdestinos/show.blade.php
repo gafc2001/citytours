@@ -1,16 +1,13 @@
 @extends('layouts.plantilla')
 
-<section class="cabecera">
+  <section class="cabecera">
   <section class="imagen">           
       <img src="{{asset('storage/img/'.$destino->imagen)}}" alt="">
   <h2>{{$destino->departamento}}</h2>
   </section>
-  
-</section>
-       <a href="{{route('destinos.index')}}">Volver a destinos</a> 
-
-@section('content')
-
+  </section>
+    @section('content')
+    <a href="{{route('destinos.index')}}">Volver a destinos</a>
 
 
        <section class="contenido">
@@ -83,7 +80,6 @@
            
         </section>
     </section>
-
 
 
 @endsection
