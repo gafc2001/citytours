@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',HomeController::class);
+Route::get('/',HomeController::class)->name('index');
 
 
 
@@ -57,11 +57,11 @@ return 'sadfasd';
 
 
 //Dashboard
-Route::get('admin',[AdminController::class,'index'])->name('admin.index')->middleware(['auth']);
-Route::resource('admin/departamento', DepartamentoController::class)->middleware(['auth']);
-Route::resource('admin/lugares', LugaresTuristicoController::class)->middleware(['auth']);
-Route::resource('admin/tour', TourController::class)->middleware(['auth']);
-Route::resource('admin/viaje', ViajeController::class)->middleware(['auth']);
+Route::get('admin',[AdminController::class,'index'])->name('admin.index')->middleware(['admin']);
+Route::resource('admin/departamento', DepartamentoController::class)->middleware(['admin']);
+Route::resource('admin/lugares', LugaresTuristicoController::class)->middleware(['admin']);
+Route::resource('admin/tour', TourController::class)->middleware(['admin']);
+Route::resource('admin/viaje', ViajeController::class)->middleware(['admin']);
 
 
 
