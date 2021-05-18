@@ -10,7 +10,7 @@
 
 body{
     background-color: rgb(228, 228, 228);
-    
+
 }
 
 /* Presentacion */
@@ -19,6 +19,7 @@ section.cabecera{
     height: 80vh;
     position: relative;
     overflow: hidden;
+    margin-bottom: 100px;
     
 }
 
@@ -51,12 +52,15 @@ section.cabecera h2{
 section.contenido{
     text-align: center;
     
-    width: 100%;
+    width: 90%;
     height: auto;
-    margin-top: 90px;
-    text-align: center;
     
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     border-left: 20px;
+    margin: auto;
+
 
     
 }
@@ -64,9 +68,9 @@ section.contenido{
 /* Contendeor de Subdestinos */
 section.contenido section.subdestinos-cont{
 
-    width: 580px;
+    width: 550px;
     height: 700px;
-    margin-left: 100px;
+
     display: inline-block;
     margin-bottom: 90px;
     position: relative;
@@ -164,11 +168,11 @@ section.contenido section.descripcion{
     height: 700px;
     background-color: rgb(255, 255, 255);
     display: inline-block;
-    margin-left: 100px;
+
     margin-bottom: 90px;
-    margin-right: 50px;
+
     overflow: hidden;
-    
+  
 }
 
 section.contenido section.descripcion section.cont-letra{

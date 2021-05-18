@@ -6,12 +6,11 @@
 
        <div class="contenedor-genera">
        
+       <button class="btnregresar"><a  href="{{route('subdestinos.show',$lugar->id_departamento)}}">Regresar</a></button>
+
               <section class="contenedor-imagen">
                      <img src="{{asset('storage/img/'.$lugar->imagen)}}" alt="">
               </section>
-
-
-
 
 
               <section class="contenedor-formulario">
