@@ -59,8 +59,6 @@
        </form>
        <a  href="{{route('subdestinos.show',$lugar->id_departamento)}}">Regresar lugares turisticos</a>
 
-
-
 <script type="text/javascript"  src="{{asset('/js/jQuery.js')}}"></script>
 <script type="text/javascript"  src="{{asset('/js/show.js')}}"></script>
 </html>
