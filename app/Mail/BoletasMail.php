@@ -49,4 +49,5 @@ private  $id;
         return $this->view('boleta.show',compact('ultima'))
         ->from(env('MAIL_FROM_ADDRESS'));
     }
+
 }
