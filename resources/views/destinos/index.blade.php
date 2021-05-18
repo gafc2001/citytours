@@ -12,7 +12,6 @@
 @foreach ($destinos as $destino)
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <section class="hero-section">
-
   <div class="card-grid">
     <a class="card" href="{{route('subdestinos.show',$destino->id)}}">
       <div class="card__background" style="background-image: url({{asset('storage/img/'.$destino->imagen)}})"></div>

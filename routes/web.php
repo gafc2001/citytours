@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',HomeController::class);
+Route::get('/',HomeController::class)->name('home');
 
 
 

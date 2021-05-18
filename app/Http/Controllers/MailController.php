@@ -14,6 +14,6 @@ class MailController extends Controller
         $correo=Auth::user()->email;
         $Mailvar = new BoletasMail($ultima);
         Mail::to($correo)->send($Mailvar);
-        return view('boleta.show',compact('ultima'));
+        return 'asdas';
     }
 }
