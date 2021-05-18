@@ -12,8 +12,7 @@ class MailController extends Controller
     //
     public function index($ultima){
         $correo=Auth::user()->email;
-        $Mailvar = new BoletasMail($ultima);
-        Mail::to($correo)->send($Mailvar);
-        return view('boleta.show',compact('ultima'));
+        Mail::to($correo)->send(new BoletasMail($ultima));
+        return redirect()->route('Viewboletas.index');
     }
 }

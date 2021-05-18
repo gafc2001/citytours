@@ -8,16 +8,10 @@
 <div class="portada"></div>
 <h1>Directorio de destinos  aqui</h1> 
 </div>
-
-
-
-
-
 <section class="hero-section">
-
   <div class="card-grid">
   @foreach ($destinos as $destino)
-    <a class="card" href="{{route('destinos.index',$destino->id)}}">
+    <a class="card" href="{{route('subdestinos.show',$destino->id)}}">
       <div class="card__background" style="background-image: url({{asset('storage/img/'.$destino->imagen)}})"></div>
       <div class="card__content">
         <p class="card__category">DESTINO:</p>

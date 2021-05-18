@@ -34,12 +34,11 @@ private  $id;
      * @return $this
      */
     public function build()
-    {     
-        
+    {
         $shares = Boleta::join('viajes', 'viajes.id', '=', 'boletas.id_travel')
        ->join('lugares_turisticos', 'lugares_turisticos.id', '=', 'viajes.id_lugar')
        ->join('departamentos', 'departamentos.id', '=', 'lugares_turisticos.id_departamento')
-       ->select('departamentos.departamento','lugares_turisticos.lugar_turistico','viajes.discount','boletas.subtotal','boletas.total')
+       ->select('departamentos.departamento','viajes.price','viajes.date','viajes.time','lugares_turisticos.lugar_turistico','boletas.quantity','viajes.discount','boletas.subtotal','boletas.total')
        ->where('boletas.id_user', '=',$this->id)
        ->get();
    
