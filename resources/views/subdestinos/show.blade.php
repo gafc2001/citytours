@@ -62,13 +62,13 @@
                 </p>
             </section>
             <section class="Sitios-Turisticos">
-                <H3>Tours</H3>
+                <h3>Tours</h3>
                     <section class="cont-sitios">
                         
                     @foreach ($subdestinos as $subdestino) 
                         <div class="sitio1">
                             <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="">
-                            <p>{{$subdestino->tour}} </p>
+                            <p>{{$subdestino->tour}}</p>
                         </div>
                         @endforeach
      
