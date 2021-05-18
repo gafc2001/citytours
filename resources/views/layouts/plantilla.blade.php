@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@
     <!--estilos -->
 </head>
 <body>
-    
+    @yield('content')
 <!--header -->
 <div class="menu">
         <!-- Espacio Logo -->
@@ -38,22 +38,36 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
+<<<<<<< HEAD
                 <li class="btn"><a href="" class="activo">INICIO</a>
                 <li class="btn"><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
+=======
+                <li><a href="{{route('index')}}" class="activo">INICIO</a>
+                <li><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
+>>>>>>> 81c0e92fc4c556d614496654d425a924875d34e2
                 </li>
                  @isset(auth()->user()->is_admin)
                  @if (auth()->user()->is_admin)
                  <li class="btn"><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
                  @endif
-                
                  @endisset
+<<<<<<< HEAD
                 <li class="btn"><a href="" class="activo">NOSOTROS</a></li>
                 
                 
                 <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">BOLETO</a></li>
                 <li class="btn"><a href="" class="activo">USER</a>
                     <ul>
+=======
+                <li><a href="#Nosotros_id" class="activo">CONTACTO</a></li>
+                @isset(auth()->user()->id)
+                 @if (auth()->user()->id)
+                <li><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
+                @endif
+                @endisset
+                <ul class="navbar-nav ml-auto">
+>>>>>>> 81c0e92fc4c556d614496654d425a924875d34e2
                         <!-- Authentication Links -->
                         @guest
                                 @if (Route::has('login'))
@@ -106,6 +120,7 @@
 
 <!-- Scripts del Pagina Destinos -->
 
+
 <script src="{{ asset('js/jQuery.js') }}"></script>
 <script src="{{ asset('js/mian.js') }}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
@@ -135,7 +150,68 @@
 		$('.loading').fadeOut(200);
 	});
 </script>
-@yield('content')
 <!--nav  -->
+@yield('footer')
+
+<footer id="Nosotros_id"class="footer" id="contac">
+    <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-2.82,119.89 C60.38,187.98 370.77,22.20 500.56,127.78 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #dedede;"></path></svg>
+    </div>
+    <div class="container-footer-all">
+        <div class="container-body">
+          <div class="colum1">
+            
+        </div>
+            <div class="colum2">
+                <h3>Redes sociales</h3>
+
+                <div class="row">
+                    <a href="" target="_blank" ><img src="/img/facebook.png" alt=""></a>
+                    <label for="">Siguenos en Facebook</label>
+                </div>
+                <div class="row">
+                    <a href="" target="_blank"><img src="img/twitter.png" alt=""></a>
+                    <label for="">Siguenos en Twitter</label>
+                </div>
+
+                <div class="row">
+                    <a href="" target="_blank"><img src="img/linkedin.png" alt=""></a>
+                    <label for="">Siguenos en Linkedin</label>
+                </div>
+            </div>
+            <div class="colum3">
+                <h3>Información Contactos</h3>
+               
+                
+                <div class="row2">
+                    <img src="img/telefono.png" alt="" class="Telefono">
+                    <label for=""></label>
+                </div>
+
+                
+                <div class="row2">
+                    <img src="img/celular.png" alt="" class="Smartphone">
+                    <label for=""></label>
+                </div>
+
+                <div class="row2">
+                    <img src="img/mensaje.png" alt="" class="Correo">
+                    <label for=""></label>
+                </div>
+            </div>
+        </div>
+
+</div>
+<div class="container-footer">
+    <div class="container-f">
+        <div class="copyright">
+            © Todos los Derechos Reservados |<a href="">CityTours</a>
+        </div>
+
+        <div class="information">
+        <a href=""> Información de Empresa</a> | <a href="">Privación y Politica</a> | <a href="">Terminos y Condiciones</a>
+        </div>
+    </div>    
+</div>
+</footer>
 </body>
 </html>
