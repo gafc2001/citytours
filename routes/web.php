@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',HomeController::class)->name('index');
+Route::get('/',HomeController::class)->name('home');
 
 
 
