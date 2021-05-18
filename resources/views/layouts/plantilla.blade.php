@@ -49,6 +49,7 @@
                 @isset(auth()->user()->id)
                  @if (auth()->user()->id)
                 <li><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
+                <li><a href=""" class="activo">User</a>
                 @endif
                 @endisset
                 <ul class="navbar-nav ml-auto">
