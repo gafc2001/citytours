@@ -23,16 +23,16 @@
                             <section class="tipo-de-viaje">
                             <h2>Seleccione los Detalles:</h2>
                             <div class="caja-viaje">
-                                   <h2>DETALLES:</h2>
+                                   <h2 class="detalleltlt">DETALLES:</h2>
                                
                                    <p class="viajelbl"> FECHA:</p> 
-                                   <p class="viajerbr">{{Form::select('id_travel', $viaje, null, ['id'=>'select-fecha'])}} </p> 
+                                   <p class="viajerbr" ReadOnly = true>{{Form::select('id_travel', $viaje, null, ['id'=>'select-fecha'])}} </p> 
 
 
                                    <label>
                                           <p class="horariolbl">
                                           HORARIO DISPONIBLE:   </p>                               
-                                          <input type=text name="time" id="time-select" value="">
+                                          <input type=text name="time"  ReadOnly = true id="time-select" value="">
                                           
                                    </label>
                                    
@@ -42,21 +42,27 @@
                                     <p class="cantilbl">
                                     CANTIDAD DE BOLETOS :
                                     </p>
-                                   <input type=text name="cantidad" id="cant-select"  value="">
+                                   <input min="0" type=number name="cantidad" id="cant-select"  value="" oninput="calculoTotal()">
 
                                    </label>
                                    <br>
+                                   <p class="lugarlbl">
+                                                 ID_LUGAR :</p>
 
-                                 
+                                                 <input type=text name="id_lugar"  id="lugarrbr" value="{{$lugar->id}}">
+
+                                          <br>
+
                             </div>
                             <button href="{{route('compra.store',auth()->user()->id)}}" type="submit">Finalizar compra</button>
+                                 
 
                             </section>
 
                             <section class="recivo">
                             <h2>Recivo:</h2>
                             <div class="caja-recibo">
-                                   <h2>Informacion</h2>
+                                   <h2 class="infotlt">Informacion</h2>
 
                                    <p class="nomblbl">NOMBRE DEL SITIO TURISTICO: </p><p class="nombrbr">{{$lugar->lugar_turistico}}</p> 
 
@@ -65,54 +71,58 @@
                                    FECHA SELECCIONADA:
                                    </p>
               
-                                   <input type=text name="fecha"  id="date-select" value="" >
+                                   <input type=text name="fecha"  ReadOnly = true id="date-select" value="" >
 
                                    </label>
 
                                    <h2 class="preciotut">Precio del VIaje</h2>
                                    <br>
                                           <p class="canrlbl">
-                                          PRECIO POR LA CANTIDAD DE BOLETOS:
+                                          PRECIO DE VIAJE:
                                           </p>
-                                          <input type=text name="price" id="price-select"  value="">
+                                          <input type=text name="price" ReadOnly = true id="price-select"  value="">
 
 
                                    <br>
 
+                                          <p class="totallbl">
+                                          PRECIO TOTAL:
+                                          </p>
+                                          <input type=text name="price" ReadOnly = true id="pricee-total"  value="">
 
 
-                                   <label >
-                                          <p class="horarilbl">
-                                          PRECIO POR ESTE HORARIO:                                          </p>
-                                          <input type=text name="price" id="price-select"  value="">
+                                          <p class="idlbl">
+                                                 ID_USUARIO :</p>
+                                                 <input type=text name="user"  id="usuariolbl" value="{{auth()->user()->id}}">
 
-                                   </label>
-                                   <br>
+                
+
+                                          
+
                                    
                             </div>
 
                             </section>
 
+                            <script type="text/javascript">
+                                   function calculoTotal(){
+
+
+                                          try{
+                                                 var Numero1=parseInt(document.getElementById("cant-select").value) || 0,
+                                                  Numero2=parseFloat(document.getElementById("price-select").value) || 0;
+
+                                                 document.getElementById("pricee-total").value=Numero1 * Numero2;
+                                          }catch(e){}
+                                   }
+
+                            </script>
 
 
 
 
-<!--  
-                            <label >
-                                   ID_USUARIO :
-                                   <br>
 
-                                   <input type=text name="user"   value="{{auth()->user()->id}}">
-                            </label>
-                            <br>
-                            <label >
-                                   ID_LUGAR :
-                                   <br>
 
-                                   <input type=text name="id_lugar"   value="{{$lugar->id}}">
-                            </label>
-                            <br>
--->
                      </form>
               </section>
        
@@ -120,8 +130,7 @@
 
               </div>
 
-
-
+<script type="text/javascript"  src="{{asset('/js/jQuery.js')}}"></script>
 <script type="text/javascript"  src="{{asset('/js/show.js')}}"></script>
 </html>
 
