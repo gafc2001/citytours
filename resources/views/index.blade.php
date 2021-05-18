@@ -62,8 +62,9 @@
   <!-- Contenido -->
   <div class="container">
 
+  <div class="title-container">
 	<h1>Muchos lugares para visitar</h1>
-
+  </div>
 	<div class="gallery">
 
 		<div class="gallery-item">

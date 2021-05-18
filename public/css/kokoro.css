@@ -31,6 +31,7 @@
     align-items: flex-start;
     display: flex;
     min-height: 100%;
+    text-align: center;
     justify-content: center;
     padding: var(--spacing-xxl) var(--spacing-l);
   }

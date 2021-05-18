@@ -49,7 +49,7 @@ padding: 18px;
   justify-content: space-between;
 }
 
-.list li{
+.list .btn{
   
   list-style: none;
   background-color: #20233a;
@@ -59,6 +59,7 @@ padding: 18px;
   height: 40px;
   border-radius: 5px;
   text-align: center;
+  justify-content: center;
 }
 
 
@@ -94,16 +95,74 @@ padding: 18px;
   text-decoration: none;
   
 }
+.list > .lista {
+  float:left;
+}
+.list li .lista{
+  color:rgb(0, 0, 0);
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius: 10px;
+  width: 250px;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  
+    
+}
 .list li .lista:hover {
   transition: all .3s ease;
-  color:#ec0000;
+  
 }
-.back{
-  background: url(/img/turismo.jpg);
-  width: 100%;
-  height: 1080px;
-  background-size: cover;
+.list li .lista p{
+  font-size: 17px;
+  color: white;
 }
+.list li ul{
+  padding-top: 10px;
+  display:none;
+  position:absolute;
+  min-width:140px;
+  
+}
+
+.list li:hover > ul{
+  display:block;
+}
+.list li ul li {
+  position:relative;
+}
+
+.list li ul li ul {
+  right:-140px;
+  top:0px;
+}
+.btn2{
+  list-style: none;
+  background: #20233a;
+  width: 110px;
+  align-items: center;
+  margin-top: 10px;
+  color:rgb(255, 255, 255);
+  text-decoration:none;
+ 
+  border-radius: 10px;
+   text-align: center;
+   justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+.btn2 a{
+  text-align: center;
+  
+
+}
+
+
+
+
+
 /**Slider**/
 body section {
   display: block;
@@ -412,6 +471,19 @@ body section {
 	.gallery-item {
 		margin-top: 80px;
 	}
+}
+.title-container{
+  margin-top: 30px;
+  text-align: center;
+ width: 100%;
+ height: 150px;
+ background-color: rgba(255, 110, 85, 0.356);
+
+}
+
+.title-container h1{
+  padding-top: 50px;
+
 }
 /**Cuerpo**/
 
