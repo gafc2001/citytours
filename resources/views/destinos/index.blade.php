@@ -1,11 +1,9 @@
-
-
 @extends('layouts.plantilla')
 
 @section('title','destinos')
 
 @section('content')
-
+ 
 <div class="contenedor_portada">
 <div class="portada"></div>
 <h1>Directorio de destinos  aqui</h1> 

@@ -55,7 +55,7 @@
               </label>
               <br>
 
-              <button href="{{route('compra.store')}}" type="submit">Finalizar compra</button>
+              <button href="{{route('compra.store')}}" type="submit"> Finalizar compra</button>
        </form>
        <a  href="{{route('subdestinos.show',$lugar->id_departamento)}}">Regresar lugares turisticos</a>
 

@@ -50,6 +50,7 @@
                 <li><a href="" class="activo">NOSOTROS</a></li>
                 <li><a href="" class="activo">CONTACTO</a></li>
                 <li><a href="" class="activo">USER</a>
+                <li><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
                 <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -109,7 +110,32 @@
 <script src="{{ asset('js/jQuery.js') }}"></script>
 <script src="{{ asset('js/mian.js') }}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
-
+<div class="loading"><img src="https://datoweb.com/img/post/3_21_gear-datoweb.gif"></div>
+<style>
+    .loading {
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: #eee;
+	}
+	.loading img {
+		position: fixed;
+		top: 50%;
+		right: 50%;
+		bottom: 50%;
+		left: 50%;
+		margin-left: -41px;
+		margin-top: -41px;
+	}
+</style>
+<script>
+    $(document).ready(function(){
+		$('.loading').fadeOut(200);
+	});
+</script>
 @yield('content')
 <!--nav  -->
 </body>

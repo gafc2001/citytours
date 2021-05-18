@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\LugaresTuristicoController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\ViajeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\MisboletasController;
 use App\Mail\BoletasMailController;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',HomeController::class)->name('home');
+Route::get('/',HomeController::class)->name('index');
 
 
 
@@ -45,8 +46,9 @@ Route::post('destinos/compra',[CompraController::class,'store'])->middleware(['a
 // Verificación de cuenta para poder entrar
 //  ->middleware(['auth'])->name('/');
 
+Route::get('Viewboletas',[MisboletasController::class,'index'])->middleware(['auth'])->name('Viewboletas.index');
 
-Route::get('boleta/{ultima}',[MailController::class,'index'])->name('boleta.build');
+Route::get('boleta/{ultima}',[MailController::class,'index'])->middleware(['auth'])->name('boleta.build');
 /*Route::get('boleta/{ultima}',function(){
 $correo= new BoletasMailController();
 Mail::to('davidalexd1234@gmail.com')->send($correo);
@@ -57,11 +59,11 @@ return 'sadfasd';
 
 
 //Dashboard
-Route::get('admin',[AdminController::class,'index'])->name('admin.index')->middleware(['auth']);
-Route::resource('admin/departamento', DepartamentoController::class)->middleware(['auth']);
-Route::resource('admin/lugares', LugaresTuristicoController::class)->middleware(['auth']);
-Route::resource('admin/tour', TourController::class)->middleware(['auth']);
-Route::resource('admin/viaje', ViajeController::class)->middleware(['auth']);
+Route::get('admin',[AdminController::class,'index'])->name('admin.index')->middleware(['admin']);
+Route::resource('admin/departamento', DepartamentoController::class)->middleware(['admin']);
+Route::resource('admin/lugares', LugaresTuristicoController::class)->middleware(['admin']);
+Route::resource('admin/tour', TourController::class)->middleware(['admin']);
+Route::resource('admin/viaje', ViajeController::class)->middleware(['admin']);
 
 
 
