@@ -11,7 +11,7 @@
 <section class="hero-section">
   <div class="card-grid">
   @foreach ($destinos as $destino)
-    <a class="card" href="{{route('subdestinos.show',$destino->id)}}">
+    <a style="border: none; border-radius:50px;" class="card" href="{{route('subdestinos.show',$destino->id)}}">
       <div class="card__background" style="background-image: url({{asset('storage/img/'.$destino->imagen)}})"></div>
       <div class="card__content">
         <p class="card__category">DESTINO:</p>

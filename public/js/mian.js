@@ -22,3 +22,17 @@ function bannerSwitcher() {
         }
     });
 });
+$(document).ready(function(){ 
+  // funcion para cambiar los tours cuando la clase se encuentre activa
+$('#carouselExampleIndicators').on('slid.bs.carousel', function(e) {
+  if($('li.carouselItem').hasClass('active')) {
+    var liActive = $(e.relatedTarget).attr("index");
+    // console.log();
+    $(".cont-sitios").html(`
+    raaaaaaaaaaa
+    `);
+
+  }
+})
+
+})
