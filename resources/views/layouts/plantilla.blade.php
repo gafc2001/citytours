@@ -38,36 +38,21 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
-<<<<<<< HEAD
                 <li class="btn"><a href="" class="activo">INICIO</a>
                 <li class="btn"><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
-=======
-                <li><a href="{{route('index')}}" class="activo">INICIO</a>
-                <li><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
->>>>>>> 81c0e92fc4c556d614496654d425a924875d34e2
                 </li>
                  @isset(auth()->user()->is_admin)
                  @if (auth()->user()->is_admin)
                  <li class="btn"><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
                  @endif
                  @endisset
-<<<<<<< HEAD
                 <li class="btn"><a href="" class="activo">NOSOTROS</a></li>
                 
                 
                 <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">BOLETO</a></li>
                 <li class="btn"><a href="" class="activo">USER</a>
                     <ul>
-=======
-                <li><a href="#Nosotros_id" class="activo">CONTACTO</a></li>
-                @isset(auth()->user()->id)
-                 @if (auth()->user()->id)
-                <li><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
-                @endif
-                @endisset
-                <ul class="navbar-nav ml-auto">
->>>>>>> 81c0e92fc4c556d614496654d425a924875d34e2
                         <!-- Authentication Links -->
                         @guest
                                 @if (Route::has('login'))

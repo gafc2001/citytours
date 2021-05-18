@@ -49,7 +49,7 @@ section.cabecera h2{
 /* Descripcion */
 section.contenido{
     text-align: center;
-    position: absolute;
+    
     width: 100%;
     height: auto;
     margin-top: 90px;
