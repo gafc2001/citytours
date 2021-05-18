@@ -38,7 +38,7 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
-                <li class="btn"><a href="" class="activo">INICIO</a>
+                <li class="btn"><a href="{{route('index')}}" class="activo">INICIO</a>
                 <li class="btn"><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
                 </li>
@@ -47,7 +47,7 @@
                  <li class="btn"><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
                  @endif
                  @endisset
-                <li class="btn"><a href="" class="activo">NOSOTROS</a></li>
+                <li class="btn"><a href="#Nosotros_id" class="activo">NOSOTROS</a></li>
                 
                 
                 <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">BOLETO</a></li>
