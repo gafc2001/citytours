@@ -10,6 +10,7 @@
 
 body{
     background-color: rgb(228, 228, 228);
+    
 }
 
 /* Presentacion */
@@ -37,7 +38,7 @@ section.cabecera h2{
     margin-top: 59vh;
     color: white;
 
-    font-family:  sans-serif;
+
     font-style: normal;
 
     text-shadow: black 0.4em 0.20em 0.3em,black 0.0em 0.20em 0.8em,black 0.1em 0.1em 0.5em;;
@@ -55,14 +56,14 @@ section.contenido{
     text-align: center;
     display: inline-block;
     border-left: 20px;
-    
+
     
 }
 
 /* Contendeor de Subdestinos */
 section.contenido section.subdestinos-cont{
-    background-color: rgb(255, 255, 255);
-    width: 550px;
+
+    width: 580px;
     height: 700px;
     margin-left: 100px;
     display: inline-block;
@@ -73,32 +74,33 @@ section.contenido section.subdestinos-cont{
     overflow: hidden;
 }
 
-
-
-.slide {
+.slide {   
     width: 550px;
     height: 700px;
     display: block;
     position: absolute;
     border-radius: 30px;
+    overflow: hidden;
 }
 
-.slide img {
-    width: 100%;
+.slide img { 
     height: 700px;
-    display: flex;
-    position: relative;
+    width: 500px;
+    margin: auto;
     object-fit: cover;
     object-position: center bottom;
     border-radius: 30px;
     margin-top: 0;
     cursor: pointer;
+    filter: blur(70%);
 }
+
 
 .carousel-inner{
     border-radius: 30px;
     display: absolute;
     position: absolute;
+    
 }
 
 ol.carousel-indicators li{
@@ -119,6 +121,41 @@ a.carousel-control-next{
     color: black;
 }
 
+
+
+/* Boton de rotacion del Sitio Turistico */
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: 100% 100%;
+    
+}
+
+a.carousel-control-prev:hover{
+    background: #20233a;
+    border-radius: 30px;
+    transition: 1s;
+}
+a.carousel-control-next:hover{
+    background: #20233a;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+a.carousel-control-next,a.carousel-control-prev{
+    width: 80px;
+}
+
+div.carousel-item div.carousel-caption h5{
+    font-size: 50px;
+    text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+}
+
+div.carousel-item div.carousel-caption p{
+    font-size: 20px;
+    text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+}
 
 /* Contendeor de Descripcion */
 section.contenido section.descripcion{
@@ -229,8 +266,6 @@ section.contenido section.descripcion section.Sitios-Turisticos section.cont-sit
     box-shadow: 0 16px 22px rgba(0, 0, 0, 1);
     transition: 1010ms;
     transform: translateY(-13px);
-
-
 }
 
 
@@ -261,12 +296,6 @@ section.contenido section.descripcion section.Sitios-Turisticos section.cont-sit
     text-shadow: black 0.4em 0.20em 0.29em,black 0.0em 0.20em 0.8em,black 0.1em 0.1em 0.5em,black 0.1em 0.1em 0.5em;;
     transition: 1s;
 }
-
-
-
-
-
-
 
 section.contenido section.descripcion section.Sitios-Turisticos section.cont-sitios div p:hover{
     background: rgba(0, 0, 0, 0);

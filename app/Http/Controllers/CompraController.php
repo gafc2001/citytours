@@ -20,6 +20,7 @@ class compraController extends Controller
         $viaje= Viaje::where('id_lugar',$lugarid)->pluck('date','id');
         $lugar= LugaresTuristico::find($lugarid);
         
+
  
         return view('compra.show',compact('lugar','viaje'));
     }
