@@ -20,7 +20,6 @@
     </a>
     @endforeach
   <div> 
-
 </section>   
 
 {{$destinos->links()}}

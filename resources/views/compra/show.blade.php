@@ -61,6 +61,7 @@
 
 
 
+<script type="text/javascript"  src="{{asset('/js/jQuery.js')}}"></script>
 <script type="text/javascript"  src="{{asset('/js/show.js')}}"></script>
 </html>
 

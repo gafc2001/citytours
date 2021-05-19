@@ -37,11 +37,7 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
-<<<<<<< HEAD
                 <li><a href="{{route('home')}}" class="activo">INICIO</a>
-=======
-                <li><a href="{{route('index')}}" class="activo">INICIO</a>
->>>>>>> 81c0e92fc4c556d614496654d425a924875d34e2
                 <li><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                 </li>
                  @isset(auth()->user()->is_admin)
