@@ -83,8 +83,7 @@
         </section>
         <section class="descripcion">
             <section class="cont-letra"> 
-                <p>Lorem ipsum dps`dps`dspd`psd`spdosdkiosjdisjdisjdisjdisjdisjdisjdisjdisjdisjdisjdisjdsijdisdjsidjsddolor sit amet consectetur adipisicing elit. Similique distinctio neque, beatae quisquam labore perspiciatis voluptatem, voluptates, eius officiis in eligendi aspernatur voluptate provident laboriosam debitis tempore ullam dicta excepturi!asasasalsklasñalspalsñlañslañslñalñslasdswdsd kskwkedwde33pkr4,f5okfo5fo5,fo5,fo5jo3434p3lep3ldp3lpd34po3p4of,lr,fo4eori4re
-                </p>
+                <p>sadsadsadsadsadsadsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
             </section>
             <section class="Sitios-Turisticos">
                 <H3>Tours</H3>
