@@ -51,15 +51,10 @@ section.cabecera h2{
 /* Descripcion */
 section.contenido{
     text-align: center;
-<<<<<<< HEAD
-=======
-    
-<<<<<<< HEAD
->>>>>>> 83fb2446b27f483fcb671fa41984c1e3a8ac0971
     width: 100%;
-=======
+
     width: 90%;
->>>>>>> f41ed27c5fa93932a34730c5adc2608af59f19f3
+
     height: auto;
     
     text-align: center;
@@ -276,9 +271,6 @@ section.contenido section.descripcion section.Sitios-Turisticos section.cont-sit
     overflow: hidden;
 }
 
-section.contenido section.descripcion section.Sitios-Turisticos section.cont-sitios div.sitios1 img{
-    
-}
 
 section.contenido section.descripcion section.Sitios-Turisticos section.cont-sitios div:hover{
     box-shadow: 0 16px 22px rgba(0, 0, 0, 0.568);

@@ -7,6 +7,7 @@
   .align {
     display: grid;
     place-items: center;
+    margin-top: 165px;
   }
   
   /* helpers/grid.css */

@@ -34,7 +34,7 @@ function onselectionchange(id){
         $('#price-select').val(html_price);
         
         
-        
+
         console.log(data.time);
 
     });

@@ -43,7 +43,7 @@
         <!-- Espacio menu -->
         <div class="list-container">
             <ul class="list">
-                <li class="btn"><a href="{{route('index')}}" class="activo">INICIO</a>
+                <li class="btn"><a href="{{route('home')}}" class="activo">INICIO</a>
                 <li class="btn"><a href="{{route('destinos.index')}}" class="activo">DESTINOS</a>
                     
                 </li>
@@ -52,14 +52,12 @@
                  <li class="btn"><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
                  @endif
                  @endisset
-                <li class="btn"><a href="#Nosotros_id" class="activo">CONTACTO</a></li>
-                @isset(auth()->user()->id)
-                 @if (auth()->user()->id)
-                <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
-                <li class="btn"><a href=""" class="activo">User</a>
-                @endif
-                @endisset
-                <ul class="navbar-nav ml-auto">
+                <li class="btn"><a href="#Nosotros_id" class="activo">NOSOTROS</a></li>
+                
+                
+                <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">BOLETO</a></li>
+                <li class="btn"><a href="" class="activo">USER</a>
+                    <ul>
                         <!-- Authentication Links -->
                         @guest
                                 @if (Route::has('login'))
