@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/cascada.css')}}">
     <link rel="stylesheet" href="{{asset('css/kokoro.css')}}">
+
+    <!--Diseño de Pagina Compra-->
+    <link rel="stylesheet" href="{{asset('css/compra.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/boleta.css')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,48 +47,46 @@
                 </li>
                  @isset(auth()->user()->is_admin)
                  @if (auth()->user()->is_admin)
-                 <li><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
+                 <li class="btn"><a href="{{route('admin.index')}}" class="activo">ADMIN </a></li>
                  @endif
                  @endisset
-                <li><a href="#Nosotros_id" class="activo">CONTACTO</a></li>
+                <li class="btn"><a href="#Nosotros_id" class="activo">CONTACTO</a></li>
                 @isset(auth()->user()->id)
                  @if (auth()->user()->id)
-                <li><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
+                <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">Boletas</a>
+                <li class="btn"><a href=""" class="activo">User</a>
                 @endif
                 @endisset
                 <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                                @if (Route::has('login'))
+                                <li class="btn2"><a class="activo" href="{{ route('login') }}"><p>{{ __('Login') }}</p></a></li>
+                                @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                @if (Route::has('register'))
+                                <li class="btn2"><a class="activo" href="{{ route('register') }}"><p>{{ __('Register') }}</p></a></li>
+                                @endif
+                                @else
+                                <li class="btn2">
+                                    <a class="activo">
+                                    @auth
+                                     <p>{{auth()->user()->username}}</p>
+                                     @endauth
+                                    </a>
                                 </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a >
-                                @auth
-                                 {{auth()->user()->username}}
-                                @endauth
-                                </a>
-
-                                <div class="" aria-labelledby="">
-                                    <a class="" href="{{ route('logout') }}"
+                                <li class="btn2">
+                                    <a class="activo" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <p>{{ __('Logout') }}</p>
+                                    
+                                        </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                                         @csrf
                                     </form>
-                                </div>
+                                    
+                                </li>
                             </li>
                         @endguest
                     </ul>
