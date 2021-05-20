@@ -55,7 +55,11 @@
                 <li class="btn"><a href="#Nosotros_id" class="activo">NOSOTROS</a></li>
                 
                 
+                @isset(auth()->user()->id)
+                 @if (auth()->user()->id)
                 <li class="btn"><a href="{{route('Viewboletas.index')}}" class="activo">BOLETO</a></li>
+                @endif
+                @endisset
                 <li class="btn"><a href="" class="activo">USER</a>
                     <ul>
                         <!-- Authentication Links -->
