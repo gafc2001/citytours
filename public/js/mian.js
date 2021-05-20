@@ -1,4 +1,4 @@
-//Slider//
+/* //Slider//
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
     if (next.length) next.prop('checked', true);
@@ -36,3 +36,10 @@ $('#carouselExampleIndicators').on('slid.bs.carousel', function(e) {
 })
 
 })
+ */
+
+
+
+  function ImagenZomm (){
+    document.getElementsByClassName
+  }

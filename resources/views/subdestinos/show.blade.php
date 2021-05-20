@@ -7,8 +7,9 @@
   </section>
   </section>
     @section('content')
-    <a href="{{route('destinos.index')}}">Volver a destinos</a>
-
+      <div class="boton-regresar">
+        <a  href="{{route('destinos.index')}}">Volver a destinos</a>
+      </div>
 
        <section class="contenido">
         <section class="subdestinos-cont">
@@ -82,10 +83,10 @@
 
         </section>
         <section class="descripcion">
-            <section class="cont-letra"> 
-                <p>Lorem ipsum dps`dps`dspd`psd`spdosdkiosjdisjdisjdisjdisjdisjdisjdisjdisjdisjdisjdisjdsijdisdjsidjsddolor sit amet consectetur adipisicing elit. Similique distinctio neque, beatae quisquam labore perspiciatis voluptatem, voluptates, eius officiis in eligendi aspernatur voluptate provident laboriosam debitis tempore ullam dicta excepturi!asasasalsklasñalspalsñlañslañslñalñslasdswdsd kskwkedwde33pkr4,f5okfo5fo5,fo5,fo5jo3434p3lep3ldp3lpd34po3p4of,lr,fo4eori4re
+<!--             <section class="cont-letra"> 
+                <p>Descripcion Destino
                 </p>
-            </section>
+            </section> -->
             <section class="Sitios-Turisticos">
                 <H3>Tours</H3>
                 
@@ -93,8 +94,10 @@
                         
                       @foreach ($subdestinos as $subdestino) 
                         <div class="sitio1">
-                          <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="" >
-                          <p>{{$subdestino->tour}}</p>
+                          <a href="#{{$subdestino->idtour}}" >
+                            <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="" >
+                            <p>{{$subdestino->tour}}</p>
+                          </a>
                         </div>
                         @endforeach
        
@@ -103,7 +106,23 @@
 
             </section>
 
+            <!-- Boton de Zoom-->
+            @foreach ($subdestinos as $subdestino)
+              
+              <section class="pantacompleta" id="{{$subdestino->idtour}}">
+                    <div class="botones-pantallacompleta">      
+                      <p>{{$subdestino->tour}}</p>
+                      <a href="" class="botoncerrar">X</a>
+                  </div>
+                  <div class="imagezoom">
+                    <a href=""><img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt=""></a>
+                  </div>
+                  <div class="contenedor-letra">
+                  <p>{{$subdestino->details}}</p>
+                  </div>
 
+              </section>
+            @endforeach
 
               
            

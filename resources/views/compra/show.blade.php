@@ -41,7 +41,7 @@
                                     <p class="cantilbl">
                                     CANTIDAD DE BOLETOS :
                                     </p>
-                                   <input min="0" type=number name="cantidad" id="cant-select"  value="" oninput="calculoTotal()">
+                                   <input min="0" type=number name="cantidad" required="" id="cant-select"  value="" oninput="calculoTotal()">
 
                                    </label>
                                    <br>

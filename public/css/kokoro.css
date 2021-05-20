@@ -47,7 +47,6 @@ body{
 
 @media(min-width: 540px){
   .card-grid{
-<<<<<<< HEAD
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-column-gap: var(--spacing-l);
@@ -95,9 +94,6 @@ body{
     transition: 
       filter 200ms linear,
       transform 200ms linear;
-=======
-    grid-template-columns: repeat(2, 1fr); 
->>>>>>> 83fb2446b27f483fcb671fa41984c1e3a8ac0971
   }
 }
 
