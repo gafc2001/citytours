@@ -83,10 +83,16 @@
 
         </section>
         <section class="descripcion">
+<<<<<<< HEAD
 <!--             <section class="cont-letra"> 
                 <p>Descripcion Destino
                 </p>
             </section> -->
+=======
+            <section class="cont-letra"> 
+                <p>sadsadsadsadsadsadsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            </section>
+>>>>>>> 72ef5a7bd57b4cd2e3226ebc72815454edb7f2fe
             <section class="Sitios-Turisticos">
                 <H3>Tours</H3>
                 

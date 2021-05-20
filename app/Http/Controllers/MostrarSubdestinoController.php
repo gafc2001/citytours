@@ -50,7 +50,7 @@ class MostrarSubdestinoController extends Controller
     {
         $destino= Departamento::find($destinos);
         $subdestinos= LugaresTuristico::join('tours','tours.id_lugar_turistico','=','lugares_turisticos.id')
-                            ->select('lugares_turisticos.lugar_turistico as lugar_turistico','tours.id_lugar_turistico as turisticoid','tours.tour as tour','lugares_turisticos.imagen as imagenL','tours.imagen as imagenT','tours.id as idtour')
+                            ->select('lugares_turisticos.lugar_turistico as lugar_turistico','tours.details','tours.id_lugar_turistico as turisticoid','tours.tour as tour','lugares_turisticos.imagen as imagenL','tours.imagen as imagenT','tours.id as idtour')
                             ->where('lugares_turisticos.id_departamento','=', $destinos)
                             ->paginate();
 

@@ -1,4 +1,4 @@
-/* //Slider//
+
 function bannerSwitcher() {
     next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
     if (next.length) next.prop('checked', true);
@@ -22,6 +22,8 @@ function bannerSwitcher() {
         }
     });
 });
+
+/* //Slider//
 $(document).ready(function(){ 
   // funcion para cambiar los tours cuando la clase se encuentre activa
 $('#carouselExampleIndicators').on('slid.bs.carousel', function(e) {
@@ -34,12 +36,4 @@ $('#carouselExampleIndicators').on('slid.bs.carousel', function(e) {
 
   }
 })
-
-})
- */
-
-
-
-  function ImagenZomm (){
-    document.getElementsByClassName
-  }
+*/

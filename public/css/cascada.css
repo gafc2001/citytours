@@ -303,9 +303,6 @@ section.contenido section.descripcion section.Sitios-Turisticos section.cont-sit
     overflow: hidden;
 }
 
-section.contenido section.descripcion section.Sitios-Turisticos section.cont-sitios div.sitios1 img{
-    
-}
 
 section.contenido section.descripcion section.Sitios-Turisticos section.cont-sitios div:hover{
     box-shadow: 0 16px 22px rgba(0, 0, 0, 0.568);
