@@ -21,8 +21,11 @@
     @endforeach
   <div> 
 </section>   
-
-{{$destinos->links()}}
+<div class="container">
+  <div class="d-flex align-items-center justify-content-center">
+    {{$destinos->links()}}
+  </div>
+</div>
 
 
       

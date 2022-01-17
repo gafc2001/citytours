@@ -15,24 +15,26 @@ use Viajes;
 class compraController extends Controller
 {
 
-    public function index(){
-        
-
+    public function index()
+    {
     }
-    public function show($lugarid){
-        $viaje= Viaje::where('id_lugar',$lugarid)->pluck('date','id');
-        $lugar= LugaresTuristico::find($lugarid);
-        
+    public function show($lugarid)
+    {
+        $viaje = Viaje::where('id_lugar', $lugarid)->pluck('date', 'id');
+        $lugar = LugaresTuristico::find($lugarid);
 
- 
-        return view('compra.show',compact('lugar','viaje'));
+
+
+        return view('compra.show', compact('lugar', 'viaje'));
     }
-    public function getViaje($id){
+    public function getViaje($id)
+    {
         return Viaje::find($id);
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
-       
+
         //$var=$request->only(['fecha','id_lugar','id_travel','cantidad','user']);
         //$cadenavar=implode(';',$var);
         $p0 = $request->fecha;
@@ -42,9 +44,9 @@ class compraController extends Controller
         $p4 = $request->user;
         DB::select(DB::raw("CALL BOLETA ('$p0', $p1, $p2, $p3, $p4)"));
         DB::select(DB::raw("CALL stock_tickes ($p2, $p3)"));
-        
-    
-      return  redirect()->route('boleta.build',$p4);
-       //
+
+
+        return  redirect()->route('boleta.build', $p4);
+        //
     }
 }

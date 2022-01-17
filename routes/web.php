@@ -6,13 +6,14 @@ use App\Http\Controllers\MostrarDestinoController;
 use App\Http\Controllers\MostrarSubdestinoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompraController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 //Dashboard
 use App\Http\Controllers\Admin\DepartamentoController;
 use App\Http\Controllers\Admin\LugaresTuristicoController;
 use App\Http\Controllers\Admin\TourController;
 use App\Http\Controllers\Admin\ViajeController;
+use App\Http\Controllers\Auth\RegisterController;
+
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MisboletasController;
 use App\Mail\BoletasMailController;
@@ -69,6 +70,7 @@ Route::resource('admin/viaje', ViajeController::class)->middleware(['admin']);
 
 
 Route::get('/registrar',[UserController::class,'create']);
+Route::post('/signup',[RegisterController::class,'signup'])->name('signup');
 
 
 Auth::routes(['verify' => true]);

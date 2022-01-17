@@ -37,9 +37,9 @@ class Departamento extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function lugaresTuristicos()
+    public function subdestinos()
     {
-        return $this->hasMany('App\Models\LugaresTuristico', 'id_departamento', 'id');
+        return $this->hasMany(LugaresTuristico::class, 'id_departamento', 'id');
     }
     
 

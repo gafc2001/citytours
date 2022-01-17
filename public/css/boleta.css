@@ -1,9 +1,12 @@
+* {
+    font-family : arial,
+}
 .contenedor-name{
     margin-top: 200px;
     text-align: center;
     width: 100%;
     height: 150px;
-   
+    
 }
 .contenedor-name h1{
     padding-top: 50px;
