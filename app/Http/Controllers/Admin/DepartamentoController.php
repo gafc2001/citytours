@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Departamento;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,17 +47,16 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Departamento::$rules);
+        $file = $request->file('imagen');
+        $path = Storage::disk("s3")->put("img",$file);
 
-        $image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$image);
-        
         $departamento = Departamento::insert([
             'departamento' => $request->departamento,
-            'imagen' => $image
+            'imagen' => $file->hashName(),
         ]);
         return redirect()->route('departamento.index')
-            ->with('success', 'Departamento created successfully.');
-        // return dd($request->all());
+            ->with('success', 'Departamento creado.');
+        
     }
 
     /**
@@ -97,14 +97,15 @@ class DepartamentoController extends Controller
         request()->validate(Departamento::$rules);
 
         $old_image = $departamento->image;
-        $dirs = Storage::delete('public/img/'.$old_image);
+        $dirs = Storage::disk("s3")->delete('img/'.$old_image);
 
-        $new_image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+        
+        $file = $request->file('imagen');
+        $path = Storage::disk("s3")->put("img",$file);
 
         $departamento->update([
             'departamento' => $request->departamento,
-            'imagen' => $new_image
+            'imagen' => $file->hashName(),
         ]);
 
         return redirect()->route('departamento.index')
@@ -121,10 +122,15 @@ class DepartamentoController extends Controller
     public function destroy($id)
     {
         $departamento = Departamento::find($id);
-        $img_path = $departamento->image;
-        $departamento->delete();
-        $dirs = Storage::delete('public/img/'.$img_path);
-        return redirect()->route('departamento.index')
-            ->with('success', 'Departamento deleted successfully');
+        $img_path = $departamento->imagen;
+        try{
+            $departamento->delete();
+            $dirs = Storage::disk("s3")->delete('img/'.$img_path);
+            return redirect()->route('departamento.index')
+                ->with('success', 'Se elimino el departamento');
+        }catch(QueryException $e){
+            return redirect()->route('departamento.index')
+                ->withErrors(['error' => 'Error al eliminar, tiene registros por eliminar']);
+        }
     }
 }

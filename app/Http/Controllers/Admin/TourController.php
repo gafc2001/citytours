@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Tour;
 use App\Models\Admin\LugaresTuristico;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class TourController
@@ -49,14 +51,12 @@ class TourController extends Controller
     public function store(Request $request)
     {
         request()->validate(Tour::$rules);
-
-        $image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$image);
+        $path = Storage::disk("s3")->put("img",$request->file('imagen'));
 
         $tour = Tour::insert([
             'tour' => $request->tour,
             'details' => $request->details,
-            'imagen' => $image,
+            'imagen' => $request->file('imagen')->hashName(),
             'id_lugar_turistico' => $request->id_lugar_turistico
         ]);
 
@@ -102,19 +102,18 @@ class TourController extends Controller
         request()->validate(Tour::$rules);
 
         $old_image = $tour->image;
-        $dirs = Storage::delete('public/img/'.$old_image);
+        $dirs = Storage::disk("s3")->delete('img/'.$old_image);
 
-        $new_image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+        $path = Storage::disk("s3")->put("img",$request->file('imagen'));
 
         $tour->update([
             'tour' => $request->tour,
             'details' => $request->details,
-            'imagen' => $new_image,
+            'imagen' => $request->file('imagen')->hashName(),
             'id_lugar_turistico' => $request->id_lugar_turistico
         ]);
 
-        return redirect()->route('admin.tour.index')
+        return redirect()->route('tour.index')
             ->with('success', 'Tour updated successfully');
     }
 
@@ -126,10 +125,16 @@ class TourController extends Controller
     public function destroy($id)
     {
         $tour = Tour::find($id);
-        $img_path = $tour->image;
-        $tour->delete();
-        $dirs = Storage::delete('public/img/'.$img_path);
-        return redirect()->route('admin.tour.index')
-            ->with('success', 'Tour deleted successfully');
+        $img_path = $tour->imagen;
+        try{
+            $tour->delete();
+            $dirs = Storage::disk("s3")->delete('img/'.$img_path);
+            return redirect()->route('tour.index')
+                ->with('success', 'Tour deleted successfully');
+        }catch(QueryException $e){
+            return redirect()->route('tour.index')
+                ->withErrors(['error' => 'Error al eliminar, tiene registros por eliminar']);
+        }
+        
     }
 }

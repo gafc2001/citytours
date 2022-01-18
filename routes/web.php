@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MisboletasController;
+use App\Http\Controllers\ImageController;
 use App\Mail\BoletasMailController;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('storage/{key_object}',[ImageController::class,'storage'])->name("storage");
 Route::get('/',HomeController::class)->name('home');
 
 
@@ -71,6 +72,5 @@ Route::resource('admin/viaje', ViajeController::class)->middleware(['admin']);
 
 Route::get('/registrar',[UserController::class,'create']);
 Route::post('/signup',[RegisterController::class,'signup'])->name('signup');
-
 
 Auth::routes(['verify' => true]);

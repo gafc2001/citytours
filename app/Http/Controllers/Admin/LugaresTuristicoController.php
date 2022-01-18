@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Departamento;
 use App\Models\Admin\LugaresTuristico;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 /**
@@ -51,12 +52,11 @@ class LugaresTuristicoController extends Controller
     {
         request()->validate(LugaresTuristico::$rules);
 
-        $image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$image);
+        $path = Storage::disk("s3")->put("img",$request->file('imagen'));
 
         $lugaresTuristico = LugaresTuristico::insert([
             'lugar_turistico' => $request->lugar_turistico,
-            'imagen' => $image,
+            'imagen' => $request->file('imagen')->hashName(),
             'id_departamento' => $request->id_departamento
         ]);
 
@@ -105,13 +105,12 @@ class LugaresTuristicoController extends Controller
         $old_image = $lugare->image;
         $dirs = Storage::delete('public/img/'.$old_image);
 
-        $new_image = $request->file('imagen')->getClientOriginalName();
-        $path = $request->file('imagen')->storeAs('public/img',$new_image);
+        $path = Storage::disk("s3")->put("img",$request->file('imagen'));
         
         
         $res = $lugare->update([
             'lugar_turistico' => $request->lugar_turistico,
-            'imagen' => $new_image,
+            'imagen' => $request->file('imagen')->hashName(),
             'id_departamento' => $request->id_departamento
         ]);
 
@@ -133,11 +132,17 @@ class LugaresTuristicoController extends Controller
     public function destroy($id)
     {
         $lugaresTuristico = LugaresTuristico::find($id);
-        $img_path = $lugaresTuristico->image;
-        $lugaresTuristico->delete();
-        $dirs = Storage::delete('public/img/'.$img_path);
+        $img_path = $lugaresTuristico->imagen;
+        try{
+            $lugaresTuristico->delete();
+            $dirs = Storage::disk("s3")->delete('img/'.$img_path);
+            return redirect()->route('lugares.index')
+            ->with('success', 'Lugare Turistico eliminado');
+        }catch(QueryException $e){
+            return redirect()->route('lugares.index')
+                ->withErrors(['error' => 'Error al eliminar, tiene registros por eliminar']);
+        }
         
-        return redirect()->route('lugares.index')
-            ->with('success', 'LugaresTuristico deleted successfully');
+        
     }
 }

@@ -2,7 +2,7 @@
 
 <section class="cabecera">
   <section class="imagen">
-    <img src="{{asset('storage/img/'.$destino->imagen)}}" alt="">
+    <img src="{{route('storage',$destino->imagen)}}" alt="">
     <h2>{{$destino->departamento}}</h2>
   </section>
 </section>
@@ -36,7 +36,7 @@
         @if ($loop->first)
         <div class="carousel-item active" index="{{$subdestino->id}}">
           <a class="btn-buy" href="{{route('compra.show',$subdestino->id)}}"><i class="fas fa-plane"></i> Comprar boleto</a>
-          <img class="d-block w-100" src="{{asset('storage/img/'.$subdestino->imagen)}}">
+          <img class="d-block w-100" src="{{route('storage',$subdestino->imagen)}}">
           <div class="carousel-caption d-none d-md-block">
             <h5>{{$subdestino->lugar_turistico}}</h5>
             <p>Te da la Bienvenida </p>
@@ -45,7 +45,7 @@
         @else
         <div class="carousel-item" index="{{$subdestino->id}}">
           <a class="btn-buy" href="{{route('compra.show',$subdestino->id)}}"><i class="fas fa-plane"></i> Comprar boleto</a>
-          <img class="d-block w-100" src="{{asset('storage/img/'.$subdestino->imagen)}}">
+          <img class="d-block w-100" src="{{route('storage',$subdestino->imagen)}}">
           <div class="carousel-caption d-none d-md-block">
             <h5>{{$subdestino->lugar_turistico}}</h5>
             <p>Te da la Bienvenida</p>
@@ -88,7 +88,7 @@
         @foreach ($subdestinos as $subdestino)
         <div class="sitio1">
           <a href="#{{$subdestino->idtour}}">
-            <img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt="">
+            <img src="{{route('storage',$subdestino->imagenT)}}" alt="">
             <p>{{$subdestino->tour}}</p>
           </a>
         </div>
@@ -108,7 +108,7 @@
         <a href="" class="botoncerrar"><i class="fas fa-times" style="width:100%;"></i></a>
       </div>
       <div class="imagezoom">
-        <a href=""><img src="{{asset('storage/img/'.$subdestino->imagenT)}}" alt=""></a>
+        <a href=""><img src="{{route('storage',$subdestino->imagenT)}}" alt=""></a>
       </div>
       <div class="contenedor-letra">
         <p>{{$subdestino->details}}</p>

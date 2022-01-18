@@ -12,7 +12,7 @@
   <div class="card-grid">
   @foreach ($destinos as $destino)
     <a style="border: none; border-radius:50px;" class="card" href="{{route('subdestinos.show',$destino->id)}}">
-      <div class="card__background" style="background-image: url({{asset('storage/img/'.$destino->imagen)}})"></div>
+      <div class="card__background" style="background-image: url({{route('storage',$destino->imagen)}})"></div>
       <div class="card__content">
         <p class="card__category">DESTINO:</p>
         <h3 class="card__heading">{{$destino->departamento}} </h3>
