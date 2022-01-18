@@ -70,7 +70,7 @@ Route::resource('admin/viaje', ViajeController::class)->middleware(['admin']);
 
 
 
-Route::get('/registrar',[UserController::class,'create']);
+Route::get('/registrar',[UserController::class,'create'])->name("register");
 Route::post('/signup',[RegisterController::class,'signup'])->name('signup');
 
 Auth::routes(['verify' => true]);

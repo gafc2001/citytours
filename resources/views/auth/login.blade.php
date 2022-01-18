@@ -7,13 +7,13 @@
   <div class="grid">
 
     <form action="{{ route('login') }}" method="POST" class="form login">
-    @csrf
+      @csrf
       <div class="form__field">
         <label for="email"><svg class="icon">
             <use xlink:href="#icon-user"></use>
           </svg><span class="hidden">Email</span></label>
         <input autocomplete="email" id="email" type="email" name="email" class="form__input" value="" placeholder="Email" required autocomplete="email" autofocus>
-        
+
       </div>
 
       <div class="form__field">
@@ -21,22 +21,24 @@
             <use xlink:href="#icon-lock"></use>
           </svg><span class="hidden">Password</span></label>
         <input id="password" type="password" name="password" class="form__input" placeholder="Contraseña" required autocomplete="current-password">
-        
+
       </div>
 
       <div class="form__field">
         <input type="submit" value="Ingresar">
       </div>
-      
+
   </div>
-     
-    
-    </form>
-    @if (Route::has('password.request'))
-        <p class="text--center">No recuerda? <a href="{{ route('password.request') }}">Restablesca la contraseña</a> <svg class="icon">
-        <use xlink:href=""></use>
-      </svg></p>
-      @endif
+
+
+  </form>
+  @if (Route::has('password.request'))
+  <p class="text--center">No tiene una cuenta aun? <a href="{{ route('register') }}">Registrese aqui</a> 
+    <svg class="icon">
+      <use xlink:href=""></use>
+    </svg>
+  </p>
+  @endif
 
   <svg xmlns="http://www.w3.org/2000/svg" class="icons">
     <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">

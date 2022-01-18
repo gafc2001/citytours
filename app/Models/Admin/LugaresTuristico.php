@@ -52,6 +52,9 @@ class LugaresTuristico extends Model
     {
         return $this->hasMany('App\Models\Viaje', 'id_lugar', 'id');
     }
+    public function tours(){
+        return $this->hasMany('App\Models\Admin\Tour', 'id_lugar_turistico', 'id');
+    }
     
 
 }

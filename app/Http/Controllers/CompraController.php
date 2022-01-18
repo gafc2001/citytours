@@ -33,8 +33,6 @@ class compraController extends Controller
     }
     public function store(Request $request)
     {
-
-
         //$var=$request->only(['fecha','id_lugar','id_travel','cantidad','user']);
         //$cadenavar=implode(';',$var);
         $p0 = $request->fecha;
@@ -44,8 +42,6 @@ class compraController extends Controller
         $p4 = $request->user;
         DB::select(DB::raw("call boleta ('$p0', $p1, $p2, $p3, $p4)"));
         DB::select(DB::raw("call stock_tickes ($p2, $p3)"));
-
-
         return  redirect()->route('boleta.build', $p4);
         //
     }
