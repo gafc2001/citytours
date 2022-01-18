@@ -1,12 +1,12 @@
 @extends('layouts.plantilla')
 
+
+@section('content')
 <section class="cabecera">
-  <section class="imagen">
-    <img src="{{route('storage',$destino->imagen)}}" alt="">
+  <section class="imagen" style="background-image: url({{route('storage',$destino->imagen)}});">
     <h2>{{$destino->departamento}}</h2>
   </section>
 </section>
-@section('content')
 <div class="boton-regresar">
   <a href="{{route('destinos.index')}}">Volver a destinos</a>
 </div>
