@@ -13,7 +13,7 @@ class Viajes extends Migration
      */
     public function up()
     {
-        Schema::create('Viajes', function (Blueprint $table) {
+        Schema::create('viajes', function (Blueprint $table) {
             $table->id();
             $table->time('time')->default('00:00');
             $table->date('date');
