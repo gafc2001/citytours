@@ -13,22 +13,23 @@ class SPBOLETA extends Migration
      */
     public function up()
     {
-        DB::unprepared('DROP PROCEDURE IF EXISTS BOLETA');
         DB::unprepared('
-        CREATE  PROCEDURE BOLETA(
-        fecha date,
-        id_lugar int,
-        id_travel int,
-        cantidad int,
-        user int
+        create or replace procedure boleta(
+            fecha date,
+            id_lugar int,
+            id_travel int,
+            cantidad int,
+            username int
         )
-        BEGIN
-        insert into boletas (quantity, total, subtotal, id_travel,id_user) 
-        values (cantidad,
-        cantidad*(select price from viajes  WHERE date=fecha AND id_lugar=id_lugar),
-        cantidad*(select price from viajes  WHERE date=fecha AND id_lugar=id_lugar)+(select discount from viajes WHERE id_lugar=id_lugar and date=fecha),
-        id_travel,user);
-        END');
+        language plpgsql
+        as $$
+        begin
+            insert into boletas (quantity, total, subtotal, id_travel,id_user) 
+            values (cantidad,
+            cantidad*(select price from viajes as v WHERE v.date=fecha AND v.id_lugar=id_lugar),
+            cantidad*(select price from viajes as v WHERE v.date=fecha AND v.id_lugar=id_lugar)+(select discount from viajes as v WHERE v.id_lugar=id_lugar and v.date=fecha),
+            id_travel,username);
+        end;$$');
     }
 
     /**
@@ -38,6 +39,6 @@ class SPBOLETA extends Migration
      */
     public function down()
     {
-       
+        DB::unprepared('drop procedure if exists boleta');
     }
 }

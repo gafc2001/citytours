@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class Departamentos extends Migration
 {
@@ -18,6 +19,7 @@ class Departamentos extends Migration
             $table->string('departamento');
             $table->string('imagen');
         });
+        Storage::disk("s3")->deleteDirectory("img");
     }
 
     /**
@@ -27,6 +29,7 @@ class Departamentos extends Migration
      */
     public function down()
     {
+        Storage::disk("s3")->deleteDirectory("img");
         Schema::dropIfExists('departamentos');
     }
 }

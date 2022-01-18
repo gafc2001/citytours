@@ -31,11 +31,11 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
         User::insert([
-            'username' => 'admin', 
-            'first_name' => 'Gustavo',
-            'last_name' => 'Farfan',
-            'email' => 'gustavo@email.com',
-            'password' => Hash::make('123'),
+            'username' => 'Administrador', 
+            'first_name' => 'super',
+            'last_name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('root'),
             'phone_number' => '987654321',
             'address' => 'Av. Pacasmayo',
             'dni' => '7654322', 

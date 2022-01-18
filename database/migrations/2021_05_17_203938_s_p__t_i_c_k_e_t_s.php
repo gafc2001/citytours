@@ -13,19 +13,18 @@ class SPTICKETS extends Migration
      */
     public function up()
     {
-        DB::unprepared('DROP PROCEDURE IF EXISTS STOCK_TICKES');
+        
         DB::unprepared('
-
-        CREATE  PROCEDURE STOCK_TICKES(
+        create or replace procedure stock_tickes(
         id_travel int,
         cantidad int
         )
-        BEGIN
+        language plpgsql
+        as $$
+        begin
         update viajes  set tickets=tickets - cantidad
         where id =id_travel;
-        END');
-    
-        
+        end;$$');   
     }
 
     /**
@@ -35,6 +34,6 @@ class SPTICKETS extends Migration
      */
     public function down()
     {
-        
+        DB::unprepared('drop procedure if exists stock_tickes');
     }
 }

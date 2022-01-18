@@ -42,8 +42,8 @@ class compraController extends Controller
         $p2 = $request->id_travel;
         $p3 = $request->cantidad;
         $p4 = $request->user;
-        DB::select(DB::raw("CALL BOLETA ('$p0', $p1, $p2, $p3, $p4)"));
-        DB::select(DB::raw("CALL stock_tickes ($p2, $p3)"));
+        DB::select(DB::raw("call boleta ('$p0', $p1, $p2, $p3, $p4)"));
+        DB::select(DB::raw("call stock_tickes ($p2, $p3)"));
 
 
         return  redirect()->route('boleta.build', $p4);
