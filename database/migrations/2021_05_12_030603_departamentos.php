@@ -19,7 +19,7 @@ class Departamentos extends Migration
             $table->string('departamento');
             $table->string('imagen');
         });
-        Storage::disk("s3")->deleteDirectory("img");
+        //Storage::disk("s3")->deleteDirectory("img");
     }
 
     /**
@@ -29,7 +29,7 @@ class Departamentos extends Migration
      */
     public function down()
     {
-        Storage::disk("s3")->deleteDirectory("img");
+        //Storage::disk("s3")->deleteDirectory("img");
         Schema::dropIfExists('departamentos');
     }
 }
